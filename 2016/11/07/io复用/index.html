@@ -126,7 +126,7 @@ poll
 
 epoll
  int epo">
-<meta property="og:updated_time" content="2016-11-07T12:44:12.000Z">
+<meta property="og:updated_time" content="2016-11-07T13:04:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="I/O  复用  --  熟悉 API篇">
 <meta name="twitter:description" content="横向比较
@@ -400,6 +400,7 @@ epoll
 </tr>
 </tbody>
 </table>
+<a id="more"></a>
 <h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p><strong>nfds</strong>: 指定被监听的文件符总数，通常传入被监听的文件符集合中的最大值 + 1<br><strong>fd_set</strong>: 该类型的定义，就不在这里贴上来，大体是，用长整形数组的每个元素的每一位来标识一个事件;<br>位操作过于繁琐，可用下列一系列的宏来操作fd_set 类型的结构体</p>
 <blockquote>
 <p>FD_ZERO(fd_set * select_fdset)   // 清除所有被标志的文件描述符<br>FD_SET(int fd,select_fdset)       // 将这个文件描述符，添加到sekect 的监听范围内<br>FD_CLR(int fd,select_fdset)      // 删除 这个文件描述符，不要被select 监听<br>FD_ISSET(int fd,select_fdset)  //测试这个文件描述符是否被添加到 select fd_set中</p>
