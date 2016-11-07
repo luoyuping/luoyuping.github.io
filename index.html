@@ -850,6 +850,146 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/06/07/socket-理解/" itemprop="url">
+                  socket 理解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-06-07T22:03:15+08:00" content="2014-06-07">
+              2014-06-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/网络编程/" itemprop="url" rel="index">
+                    <span itemprop="name">网络编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/06/07/socket-理解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/06/07/socket-理解/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>tcp/ip  协议栈负责数据的封装，发送，接收，解封装，分发到应用程序<br>tcp/ip 协议栈是参照网络五层模型，根据RFC×××网络规范，实现的系统程序，提供网络服务</p>
+</blockquote>
+<h2 id="socket-的理解"><a href="#socket-的理解" class="headerlink" title="socket 的理解"></a>socket 的理解</h2><h2 id="端口的理解"><a href="#端口的理解" class="headerlink" title="端口的理解"></a>端口的理解</h2><p><strong>为啥引入端口</strong></p>
+<blockquote>
+<p>在网络通信过程中，需要唯一识别通信两端的端点，就是使用端口识别运行于某主机中的应用程序。如果没有引入端口，则只能通过 进程号进行识别。进程号是系统动态分配的，不同的系统会使用不同的进程标识符，应用程序在运行之前不知道自己的进程号，如果需要运行后再广播进程号则很难 保证通信的顺利进行。而引入端口后，就可以利用端口号识别应用程序，同时通过固定端口号来识别和使用公共服务，如HTTP和FTP等。</p>
+</blockquote>
+<p><strong>  一个端口对应一个网络应用，一个应用可占据多个端口 </strong><br>我原来有这样的疑惑：</p>
+<blockquote>
+<p>编写网络程序，首先，调用<em>bind(sockfd,server_addr,length)</em> 将某个socket 绑定到某个端口;<br> 然后，你调用<em>accept(sockfd,sock_addr_client,length)</em>,得到一个新的链接socket;<br>那么，在调用bind时，是否意味着sockfd 已经在不断接测是否有新的链接请求，那么它不就一直在占用这端口了吗，数据的接收和发送的套接字是通过哪个端口进行工作的？是否工作在另一个端口？</p>
+</blockquote>
+<p><a href="http://blog.csdn.net/fansongy/article/details/7767129" target="_blank" rel="external">看这篇blog</a> </p>
+<blockquote>
+<p>我谈谈个人的理解：<br> bind（）调用后的套接字的结构体，填充着服务端的ip和port;<br>accept调用后，获取到客户端的ip和端口;<br>tcp/ip 通讯在<strong>传输层</strong>，<strong>网络层</strong>的传输的<strong>源</strong>和<strong>目地</strong>全部获取到<br><strong>socket 是对TCP/IP协议栈的抽象，不是简单对网络层次的映射</strong></p>
+</blockquote>
+<h2 id="socket本无C-S模型"><a href="#socket本无C-S模型" class="headerlink" title="socket本无C/S模型"></a>socket本无C/S模型</h2><p>tcp/ip  没有去规定设计者去这样设计网络框架，这是广大程序员设计的经典模型;<br>常见C/S，P2P（时常会有一个资源发现点）</p>
+<h2 id="原始套接字-amp-高级套接字-amp-标准套接字"><a href="#原始套接字-amp-高级套接字-amp-标准套接字" class="headerlink" title="原始套接字 &amp; 高级套接字 &amp; 标准套接字"></a>原始套接字 &amp; 高级套接字 &amp; 标准套接字</h2><ul>
+<li>tcp 套接字，udp套接字为标准套接字，与传输层打交道; </li>
+<li>原始套接字，与IP网络协议栈打交道，利用原始套接字构建特定类型的TCP或者UDP的分组</li>
+<li>| 原始套接字|标准套接字|高级套接字|<br>|:————-|:——————-:|———————:|<br>|socket(AF_INET,SOCK_RAW,proctal)|socket(AF_INET,SOCK_STREAM  ‘or’ SOCK_DGRM,0)|socket(AF_UNIX,SOCK_STREAM  ‘or’ SOCK_DGRM,0)</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -891,7 +1031,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -899,7 +1039,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -908,7 +1048,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
