@@ -1,0 +1,726 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="I/O  复用  –  熟悉 API篇##横向比较
+
+
+
+
+函数原型
+
+
+
+
+
+select
+ int select(int nfds,fd_set* readfds,fd_set* writefds,fd_set* exceptfds,struct timeval* timeout )
+
+
+poll
+ int poll(struct pollfd* fds,nfds_t nfds,int tim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="io复用">
+<meta property="og:url" content="http://yoursite.com/2016/11/07/io复用/index.html">
+<meta property="og:site_name" content="LYP's Blog">
+<meta property="og:description" content="I/O  复用  –  熟悉 API篇##横向比较
+
+
+
+
+函数原型
+
+
+
+
+
+select
+ int select(int nfds,fd_set* readfds,fd_set* writefds,fd_set* exceptfds,struct timeval* timeout )
+
+
+poll
+ int poll(struct pollfd* fds,nfds_t nfds,int tim">
+<meta property="og:updated_time" content="2016-11-06T17:23:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="io复用">
+<meta name="twitter:description" content="I/O  复用  –  熟悉 API篇##横向比较
+
+
+
+
+函数原型
+
+
+
+
+
+select
+ int select(int nfds,fd_set* readfds,fd_set* writefds,fd_set* exceptfds,struct timeval* timeout )
+
+
+poll
+ int poll(struct pollfd* fds,nfds_t nfds,int tim">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/11/07/io复用/"/>
+
+
+  <title> io复用 | LYP's Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">LYP's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            了解我
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="/resume" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            挖我
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                io复用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-07T01:22:01+08:00" content="2016-11-07">
+              2016-11-07
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/07/io复用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/07/io复用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="I-O-复用-–-熟悉-API篇"><a href="#I-O-复用-–-熟悉-API篇" class="headerlink" title="I/O  复用  –  熟悉 API篇"></a>I/O  复用  –  熟悉 API篇</h1><p>##横向比较</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th>函数原型</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">select</td>
+<td><strong> int select(int nfds,fd_set* readfds,fd_set* writefds,fd_set* exceptfds,struct timeval* timeout )</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">poll</td>
+<td><strong> int poll(struct pollfd* fds,nfds_t nfds,int timeout) </strong></td>
+</tr>
+<tr>
+<td style="text-align:left">epoll</td>
+<td><strong> int epoll(int epollfd,struct epoll_event* events,int maxevent,int timeout) </strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p><strong>nfds</strong>: 指定被监听的文件符总数，通常传入被监听的文件符集合中的最大值 + 1<br><strong>fd_set</strong>: 该类型的定义，就不在这里贴上来，大体是，用长整形数组的每个元素的每一位来标识一个事件;<br>位操作过于繁琐，可用下列一系列的宏来操作fd_set 类型的结构体</p>
+<blockquote>
+<p>FD_ZERO(fd_set * select_fdset)   // 清除所有被标志的文件描述符<br>FD_SET(int fd,select_fdset)       // 将这个文件描述符，添加到sekect 的监听范围内<br>FD_CLR(int fd,select_fdset)      // 删除 这个文件描述符，不要被select 监听<br>FD_ISSET(int fd,select_fdset)  //测试这个文件描述符是否被添加到 select fd_set中</p>
+</blockquote>
+<h2 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h2><h3 id="struct-pollfd"><a href="#struct-pollfd" class="headerlink" title="struct pollfd"></a>struct pollfd</h3><p><code>struct pollfd
+{
+    int fd;
+    short events;
+    short revents;
+};</code></p>
+<h3 id="参数解释"><a href="#参数解释" class="headerlink" title="参数解释"></a>参数解释</h3><p><strong>pollfd</strong>： 是一个数组的地址，数组的每个元素，将一个文件描述符，和该文件描述符上调用者想要监听的事件与实际上发生了的事件，绑定在一块，和select 一样，每个事件用一个位来标识（<strong>联想hashset  的原理</strong>）</p>
+<p><strong> nfds_t </strong>: 数组长度<br><strong> timeout </strong>:</p>
+<h2 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h2><p><strong> epollfd </strong>: 是内核和用户联系的桥梁，epoll 操作 的标识<br>epollfd = epoll_create(int size)  //  size 是用户建议性给内核提示开多打的事件事件表</p>
+<p><strong> struct epoll_events </strong><br> struct epoll_event<br>{<br>    _uint32_t   events;<br>    epoll_data_t data;<br>}</p>
+<p>typedef union epoll_data<br>{<br>    void<em> ptr ;  //  指定fd 相关的用户数据<br>      int fd;         // 给联合体中使用最多的成员，指定事件的主人<br>    uint32_t    u32;<br>    uint64_t    u64;<br>} epoll_data<em>t;<br> // 关于 ptr 的使用，我还没用过，后面补充吧 -</em>- ..<br><em>*MAXEVENT  :</em></em>   数组的长度,类型 struct  epoll_event</p>
+<h2 id="事件-event"><a href="#事件-event" class="headerlink" title="事件  event"></a>事件  event</h2><p><em>以epoll 支持的事件为例</em></p>
+<p>常用：<br>EPOLLIN<br>EPOLLOUT<br>EPOLLRDHUP<br>EPOLLERR<br>EPOLLET<br>EPOLLONESHOT</p>
+<h2 id="三种I-O复用-宏观上的比较"><a href="#三种I-O复用-宏观上的比较" class="headerlink" title="三种I/O复用 宏观上的比较"></a>三种I/O复用 宏观上的比较</h2><p>select</p>
+<blockquote>
+<p> 将事件和文件描述符没有结合起来，第一个参数代表文件描述符，后面三个参数代表它支持的三种事件:可读/可写/异常（接收带外数据），每次调用前，都得重置三个fd_set 集合</p>
+</blockquote>
+<p>poll</p>
+<blockquote>
+<p> 将文件描述符和事件绑定在一块，作为数组传入，并且，它将要检测的事件，和实际内核修改的事件，分离开，相对select(),设计好多了。<br>用户通过pollfd.event 传入感兴趣的事件，内核通过修改 pollfd.revent 反馈 pollfd.fd 上发生的事件</p>
+</blockquote>
+<p>epoll</p>
+<blockquote>
+<p>跟上面两种方式完全不同，没有传入事件的过程。它在内核维护一个事件表，提供独立的系统调用epoll_ctl( )<br>来操作该事件表，这样，用户调用epoll_wait( …,event,…)来取得返回就绪的事件，复杂度达到n(1).</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/07/线程池/" rel="next" title="线程池">
+                <i class="fa fa-chevron-left"></i> 线程池
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/07/io复用/"
+           data-title="io复用" data-url="http://yoursite.com/2016/11/07/io复用/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="罗宇平" />
+          <p class="site-author-name" itemprop="name">罗宇平</p>
+          <p class="site-description motion-element" itemprop="description">keep thinking!</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luoyuping" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#I-O-复用-–-熟悉-API篇"><span class="nav-number">1.</span> <span class="nav-text">I/O  复用  –  熟悉 API篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#select"><span class="nav-number">1.1.</span> <span class="nav-text">select</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">1.1.1.</span> <span class="nav-text">参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#poll"><span class="nav-number">1.2.</span> <span class="nav-text">poll</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#struct-pollfd"><span class="nav-number">1.2.1.</span> <span class="nav-text">struct pollfd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数解释"><span class="nav-number">1.2.2.</span> <span class="nav-text">参数解释</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#epoll"><span class="nav-number">1.3.</span> <span class="nav-text">epoll</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件-event"><span class="nav-number">1.4.</span> <span class="nav-text">事件  event</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三种I-O复用-宏观上的比较"><span class="nav-number">1.5.</span> <span class="nav-text">三种I/O复用 宏观上的比较</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015.7 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">罗宇平</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"bereadyme"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
