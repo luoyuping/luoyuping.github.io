@@ -270,7 +270,7 @@
               
                 
                 <a class="post-title-link" href="/2016/11/07/io复用/" itemprop="url">
-                  io复用
+                  I/O  复用  --  熟悉 API篇
                 </a>
               
             
@@ -320,8 +320,7 @@
       
         
           
-            <h1 id="I-O-复用-–-熟悉-API篇"><a href="#I-O-复用-–-熟悉-API篇" class="headerlink" title="I/O  复用  –  熟悉 API篇"></a>I/O  复用  –  熟悉 API篇</h1><p>##横向比较</p>
-<table>
+            <h2 id="横向比较"><a href="#横向比较" class="headerlink" title="横向比较"></a>横向比较</h2><table>
 <thead>
 <tr>
 <th style="text-align:left"></th>
@@ -347,26 +346,21 @@
 <blockquote>
 <p>FD_ZERO(fd_set * select_fdset)   // 清除所有被标志的文件描述符<br>FD_SET(int fd,select_fdset)       // 将这个文件描述符，添加到sekect 的监听范围内<br>FD_CLR(int fd,select_fdset)      // 删除 这个文件描述符，不要被select 监听<br>FD_ISSET(int fd,select_fdset)  //测试这个文件描述符是否被添加到 select fd_set中</p>
 </blockquote>
-<h2 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h2><h3 id="struct-pollfd"><a href="#struct-pollfd" class="headerlink" title="struct pollfd"></a>struct pollfd</h3><p><code>struct pollfd
-{
-    int fd;
-    short events;
-    short revents;
-};</code></p>
+<h2 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h2><h3 id="struct-pollfd"><a href="#struct-pollfd" class="headerlink" title="struct pollfd"></a>struct pollfd</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> pollfd</div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> fd;</div><div class="line">	<span class="keyword">short</span> events;</div><div class="line">	<span class="keyword">short</span> revents;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="参数解释"><a href="#参数解释" class="headerlink" title="参数解释"></a>参数解释</h3><p><strong>pollfd</strong>： 是一个数组的地址，数组的每个元素，将一个文件描述符，和该文件描述符上调用者想要监听的事件与实际上发生了的事件，绑定在一块，和select 一样，每个事件用一个位来标识（<strong>联想hashset  的原理</strong>）</p>
-<p><strong> nfds_t </strong>: 数组长度<br><strong> timeout </strong>:</p>
+<p><strong> nfds_t </strong>: 数组长度<br><strong> timeout </strong>: </p>
 <h2 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h2><p><strong> epollfd </strong>: 是内核和用户联系的桥梁，epoll 操作 的标识<br>epollfd = epoll_create(int size)  //  size 是用户建议性给内核提示开多打的事件事件表</p>
-<p><strong> struct epoll_events </strong><br> struct epoll_event<br>{<br>    _uint32_t   events;<br>    epoll_data_t data;<br>}</p>
-<p>typedef union epoll_data<br>{<br>    void<em> ptr ;  //  指定fd 相关的用户数据<br>      int fd;         // 给联合体中使用最多的成员，指定事件的主人<br>    uint32_t    u32;<br>    uint64_t    u64;<br>} epoll_data<em>t;<br> // 关于 ptr 的使用，我还没用过，后面补充吧 -</em>- ..<br><em>*MAXEVENT  :</em></em>   数组的长度,类型 struct  epoll_event</p>
+<p><strong> struct epoll_events </strong><br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">struct</span> epoll_event</div><div class="line">&#123; </div><div class="line">	<span class="keyword">_uint32_t</span>   events;</div><div class="line">	<span class="keyword">epoll_data_t</span> data;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">union</span> epoll_data</div><div class="line">&#123;	</div><div class="line">	<span class="keyword">void</span>* ptr ;  <span class="comment">//  指定fd 相关的用户数据</span></div><div class="line"> 	 <span class="keyword">int</span> fd;         <span class="comment">// 给联合体中使用最多的成员，指定事件的主人</span></div><div class="line">	<span class="keyword">uint32_t</span>	u32;</div><div class="line">	<span class="keyword">uint64_t</span>	u64;</div><div class="line">&#125; <span class="keyword">epoll_data_t</span>;</div></pre></td></tr></table></figure></p>
+<p> // 关于 ptr 的使用，我还没用过，后面补充吧 -_- ..<br><strong>MAXEVENT  :</strong>   数组的长度,类型 struct  epoll_event</p>
 <h2 id="事件-event"><a href="#事件-event" class="headerlink" title="事件  event"></a>事件  event</h2><p><em>以epoll 支持的事件为例</em></p>
 <p>常用：<br>EPOLLIN<br>EPOLLOUT<br>EPOLLRDHUP<br>EPOLLERR<br>EPOLLET<br>EPOLLONESHOT</p>
 <h2 id="三种I-O复用-宏观上的比较"><a href="#三种I-O复用-宏观上的比较" class="headerlink" title="三种I/O复用 宏观上的比较"></a>三种I/O复用 宏观上的比较</h2><p>select</p>
 <blockquote>
-<p> 将事件和文件描述符没有结合起来，第一个参数代表文件描述符，后面三个参数代表它支持的三种事件:可读/可写/异常（接收带外数据），每次调用前，都得重置三个fd_set 集合</p>
+<p>将事件和文件描述符没有结合起来，第一个参数代表文件描述符，后面三个参数代表它支持的三种事件:可读/可写/异常（接收带外数据），每次调用前，都得重置三个fd_set 集合</p>
 </blockquote>
 <p>poll</p>
 <blockquote>
-<p> 将文件描述符和事件绑定在一块，作为数组传入，并且，它将要检测的事件，和实际内核修改的事件，分离开，相对select(),设计好多了。<br>用户通过pollfd.event 传入感兴趣的事件，内核通过修改 pollfd.revent 反馈 pollfd.fd 上发生的事件</p>
+<p>将文件描述符和事件绑定在一块，作为数组传入，并且，它将要检测的事件，和实际内核修改的事件，分离开，相对select(),设计好多了。<br>用户通过pollfd.event 传入感兴趣的事件，内核通过修改 pollfd.revent 反馈 pollfd.fd 上发生的事件</p>
 </blockquote>
 <p>epoll</p>
 <blockquote>
