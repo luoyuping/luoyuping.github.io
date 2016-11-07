@@ -587,16 +587,16 @@
         
           
             <p><strong>make your  gnome-terminal support 256 colors</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if [[ ($COLORTERM == gnome-terminal || $(cat /proc/$PPID/cmdline) == *gnome-terminal* )</div><div class="line">    &amp;&amp; $TERM != screen* ]]; then</div><div class="line">    export TERM=xterm-256color</div><div class="line">fi</div></pre></td></tr></table></figure></p>
-<p>关键是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export TERM=xterm-256color</div></pre></td></tr></table></figure></p>
+<p>关键是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export TERM=xterm-256color</div></pre></td></tr></table></figure>
 <p>如此配置仅在 GNOME Terminal 、且不在 screen/tmux 会话中时设置为 xterm-256color 。</p>
 <hr>
 <p><strong> bash ? ～～ no!    oh-my-zsh</strong><br>zsh 完全兼容 bash，首先把你的 bashrc 直接拷贝进zshrc<br>啥？你还是玩bash？那好吧，来，看个小视频<a href="https://www.youtube.com/watch?v=iINdaimyVds" target="_blank" rel="external">(点这，你得翻墙)</a><br>等等，zsh又得配置半天入门，好吧，来份oh-my-zsh<a href="http://ohmyz.sh/" target="_blank" rel="external">点这</a> </p>
-<p>#####必要的插件安装：</p>
-<ul>
+<h5 id="必要的插件安装："><a href="#必要的插件安装：" class="headerlink" title="必要的插件安装："></a>必要的插件安装：</h5><ul>
 <li>git</li>
 <li>autojump (记录最近使用过的目录，跳转极为方便，使用方法自行google)</li>
 </ul>
-<p>#####zsh 主题：<br>我用的是 robbyrussell,  agnoster 看起来比较牛逼（我目前没有成功安装，装了字体拓展还是不行，见鬼）</p>
+<h5 id="zsh-主题："><a href="#zsh-主题：" class="headerlink" title="zsh 主题："></a>zsh 主题：</h5><p>我用的是 robbyrussell,  agnoster 看起来比较牛逼（我目前没有成功安装，装了字体拓展还是不行，见鬼）</p>
 <hr>
 <p><strong>终端配色丑？-_-</strong><br>我用的是 gnome-terminal ，我就讲我的配置的步骤</p>
 <ul>
@@ -606,7 +606,8 @@
 <li>效果是这样的<br><img src="http://i3.tietuku.com/41139c18a4c467ba.png" alt=""><br>还行，但不满意他的透明度，调整gnome-terminal 的透明度无效，原因应该是具体的配色源文件颜色数值的问题，以后折腾</li>
 </ul>
 </li>
-<li>隐藏user@hostname,方法是在<figure class="highlight plain"><figcaption><span>中加入如下的一句</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">export DEFAULT_USER=`whoami`</div></pre></td></tr></table></figure></li>
+<li>隐藏user@hostname,方法是在<strong>.zshrc</strong> 中加入如下的一句<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export DEFAULT_USER=`whoami`</div></pre></td></tr></table></figure>
+</li>
 </ul>
 <hr>
 <p>参考：</p>
