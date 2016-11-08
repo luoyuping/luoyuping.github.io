@@ -960,8 +960,23 @@
 <h2 id="原始套接字-amp-高级套接字-amp-标准套接字"><a href="#原始套接字-amp-高级套接字-amp-标准套接字" class="headerlink" title="原始套接字 &amp; 高级套接字 &amp; 标准套接字"></a>原始套接字 &amp; 高级套接字 &amp; 标准套接字</h2><ul>
 <li>tcp 套接字，udp套接字为标准套接字，与传输层打交道; </li>
 <li>原始套接字，与IP网络协议栈打交道，利用原始套接字构建特定类型的TCP或者UDP的分组</li>
-<li>| 原始套接字|标准套接字|高级套接字|<br>|:————-|:——————-:|———————:|<br>|socket(AF_INET,SOCK_RAW,proctal)|socket(AF_INET,SOCK_STREAM  ‘or’ SOCK_DGRM,0)|socket(AF_UNIX,SOCK_STREAM  ‘or’ SOCK_DGRM,0)</li>
 </ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">原始套接字</th>
+<th style="text-align:center">标准套接字</th>
+<th style="text-align:right">高级套接字</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">socket(AF_INET,SOCK_RAW,proctal)</td>
+<td style="text-align:center">socket(AF_INET,SOCK_STREAM  ‘or’ SOCK_DGRM,0)</td>
+<td style="text-align:right">socket(AF_UNIX,SOCK_STREAM  ‘or’ SOCK_DGRM,0)</td>
+</tr>
+</tbody>
+</table>
 
           
         
