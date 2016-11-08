@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="bash," />
+  <meta name="keywords" content="linux," />
 
 
 
@@ -84,70 +84,31 @@
 
 
 
-<meta name="description" content="bash  or zsh shortcuts
-原来我不太喜欢终端环境，其中一个比较大的原因是：辛苦敲了一大串字，发现有错，老老实实的将手指挪动到方向键，左左右右，左右，右左-_-google 找了，发现大量的 shortcuts ，又可以开心的在终端下，开心的玩耍了
+<meta name="description" content="1. 进程、进程组、会话  进程(process)属于进程组(group)，进程组属于会话(session)
 
-罗列如下:
+2. 守护进程的创建
+父进程 fork() 产生子进程,父进程退出.这样做保证即将要成为会话组长的进程，调用setsid()能调用成功
 
-
-
-option
-action
-PS
-
-
-
-
-CTRL-c
-Stop current command
-
-
-CTRL-">
+父进程先于子进程退出后，子进程，被init进程收养，调用setsid(),脱离init进程控制，成为会话组长,并与原来的登录会话和进程组脱离,同时脱离">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bash shortcuts">
-<meta property="og:url" content="http://beready.me/2015/01/05/bash-shortcuts/index.html">
+<meta property="og:title" content="进程">
+<meta property="og:url" content="http://beready.me/2016/11/08/进程/index.html">
 <meta property="og:site_name" content="LYP's Blog">
-<meta property="og:description" content="bash  or zsh shortcuts
-原来我不太喜欢终端环境，其中一个比较大的原因是：辛苦敲了一大串字，发现有错，老老实实的将手指挪动到方向键，左左右右，左右，右左-_-google 找了，发现大量的 shortcuts ，又可以开心的在终端下，开心的玩耍了
+<meta property="og:description" content="1. 进程、进程组、会话  进程(process)属于进程组(group)，进程组属于会话(session)
 
-罗列如下:
+2. 守护进程的创建
+父进程 fork() 产生子进程,父进程退出.这样做保证即将要成为会话组长的进程，调用setsid()能调用成功
 
-
-
-option
-action
-PS
-
-
-
-
-CTRL-c
-Stop current command
-
-
-CTRL-">
-<meta property="og:updated_time" content="2016-11-07T14:03:20.000Z">
+父进程先于子进程退出后，子进程，被init进程收养，调用setsid(),脱离init进程控制，成为会话组长,并与原来的登录会话和进程组脱离,同时脱离">
+<meta property="og:updated_time" content="2016-11-08T05:49:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bash shortcuts">
-<meta name="twitter:description" content="bash  or zsh shortcuts
-原来我不太喜欢终端环境，其中一个比较大的原因是：辛苦敲了一大串字，发现有错，老老实实的将手指挪动到方向键，左左右右，左右，右左-_-google 找了，发现大量的 shortcuts ，又可以开心的在终端下，开心的玩耍了
+<meta name="twitter:title" content="进程">
+<meta name="twitter:description" content="1. 进程、进程组、会话  进程(process)属于进程组(group)，进程组属于会话(session)
 
-罗列如下:
+2. 守护进程的创建
+父进程 fork() 产生子进程,父进程退出.这样做保证即将要成为会话组长的进程，调用setsid()能调用成功
 
-
-
-option
-action
-PS
-
-
-
-
-CTRL-c
-Stop current command
-
-
-CTRL-">
+父进程先于子进程退出后，子进程，被init进程收养，调用setsid(),脱离init进程控制，成为会话组长,并与原来的登录会话和进程组脱离,同时脱离">
 
 
 
@@ -168,10 +129,10 @@ CTRL-">
 
 
 
-  <link rel="canonical" href="http://beready.me/2015/01/05/bash-shortcuts/"/>
+  <link rel="canonical" href="http://beready.me/2016/11/08/进程/"/>
 
 
-  <title> bash shortcuts | LYP's Blog </title>
+  <title> 进程 | LYP's Blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -321,7 +282,7 @@ CTRL-">
             
             
               
-                bash shortcuts
+                进程
               
             
           </h1>
@@ -333,8 +294,8 @@ CTRL-">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-01-05T21:55:10+08:00" content="2015-01-05">
-              2015-01-05
+            <time itemprop="dateCreated" datetime="2016-11-08T13:47:49+08:00" content="2016-11-08">
+              2016-11-08
             </time>
           </span>
 
@@ -347,8 +308,8 @@ CTRL-">
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/tools/" itemprop="url" rel="index">
-                    <span itemprop="name">tools</span>
+                  <a href="/categories/总结/" itemprop="url" rel="index">
+                    <span itemprop="name">总结</span>
                   </a>
                 </span>
 
@@ -363,8 +324,8 @@ CTRL-">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/01/05/bash-shortcuts/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/01/05/bash-shortcuts/" itemprop="commentsCount"></span>
+                <a href="/2016/11/08/进程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/08/进程/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -387,93 +348,33 @@ CTRL-">
       
 
       
-        <h2 id="bash-or-zsh-shortcuts"><a href="#bash-or-zsh-shortcuts" class="headerlink" title="bash  or zsh shortcuts"></a>bash  or zsh shortcuts</h2><blockquote>
-<p>原来我不太喜欢终端环境，其中一个比较大的原因是：辛苦敲了一大串字，发现有错，老老实实的将手指挪动到方向键，左左右右，左右，右左-_-<br>google 找了，发现大量的 shortcuts ，又可以开心的在终端下，开心的玩耍了</p>
-</blockquote>
-<p>罗列如下:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">option</th>
-<th style="text-align:center">action</th>
-<th style="text-align:right">PS</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">CTRL-c</td>
-<td style="text-align:center">Stop current command</td>
-</tr>
-<tr>
-<td style="text-align:left">CTRL-z</td>
-<td style="text-align:center">Sleep program</td>
-</tr>
-<tr>
-<td style="text-align:left">CTRL-a</td>
-<td style="text-align:center">Go to start of line</td>
-</tr>
-<tr>
-<td style="text-align:left">CTRL-e</td>
-<td style="text-align:center">Go to end of line</td>
-</tr>
-<tr>
-<td style="text-align:left">CTRL-u</td>
-<td style="text-align:center">Cut from start of line</td>
-</tr>
-<tr>
-<td style="text-align:left">CTRL-w</td>
-<td style="text-align:center">delete a word in front the Cursor</td>
-</tr>
-<tr>
-<td style="text-align:left">CTRL-k</td>
-<td style="text-align:center">Cut to end of line</td>
-</tr>
-<tr>
-<td style="text-align:left">CTRL-r</td>
-<td style="text-align:center">Search history</td>
-</tr>
-<tr>
-<td style="text-align:left">CTRL + l</td>
-<td style="text-align:center">Clear screen</td>
-</tr>
-<tr>
-<td style="text-align:left">CTRL + s</td>
-<td style="text-align:center">Stop output to screen</td>
-</tr>
-<tr>
-<td style="text-align:left">CTRL + q</td>
-<td style="text-align:center">Re-enable screen output</td>
-</tr>
-<tr>
-<td style="text-align:left">!!</td>
-<td style="text-align:center">Repeat last command</td>
-</tr>
-<tr>
-<td style="text-align:left">!abc</td>
-<td style="text-align:center">Run last command starting with abc</td>
-</tr>
-<tr>
-<td style="text-align:left">!abc:p</td>
-<td style="text-align:center">Print last command starting with abc</td>
-</tr>
-<tr>
-<td style="text-align:left">!$</td>
-<td style="text-align:center">Last argument of previous command</td>
-</tr>
-<tr>
-<td style="text-align:left">ALT-.</td>
-<td style="text-align:center">Last argument of previous command</td>
-</tr>
-<tr>
-<td style="text-align:left">!*</td>
-<td style="text-align:center">All arguments of previous command</td>
-</tr>
-<tr>
-<td style="text-align:left">^abc ^123</td>
-<td style="text-align:center">Run previous command, replacing abc with 123</td>
-</tr>
-</tbody>
-</table>
+        <h3 id="1-进程、进程组、会话"><a href="#1-进程、进程组、会话" class="headerlink" title="1. 进程、进程组、会话"></a>1. <strong>进程、进程组、会话</strong></h3><p>  进程(process)属于进程组(group)，进程组属于会话(session)</p>
+<hr>
+<h3 id="2-守护进程的创建"><a href="#2-守护进程的创建" class="headerlink" title="2. 守护进程的创建"></a>2. <strong>守护进程的创建</strong></h3><ul>
+<li><p>父进程 fork() 产生子进程,父进程退出.这样做保证即将要成为会话组长的进程，调用setsid()能调用成功</p>
+</li>
+<li><p>父进程先于子进程退出后，子进程，被init进程收养，调用setsid(),脱离init进程控制，成为会话组长,并与原来的登录会话和进程组脱离,同时脱离终端的控制。</p>
+</li>
+<li><p>会话组长可以重新代开控制终端，那么可以使该进程再fork（）一次，然后父进程退出，产生的子进程被init进程收养，最终，得到的进程，具备: <strong>脱离终端控制，处在于一个新的会话组,并且不是会话组长</strong></p>
+</li>
+<li><p>关闭所有从父进程继承的不再需要的文件描述符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">for (int i = 0;  i &lt; NOFILE; ++ i)                                   </div><div class="line">&#123;</div><div class="line">         close(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>改变当前工作目录<br>进程活动时，其工作目录所在的文件系统不能卸下。一般需要将工作目录改变到根目录。对于需要转储核心，写运行日志的进程将工作目录改变到特定目录如/tmp,调用 <code>chdir(&quot;/&quot;)</code></p>
+</li>
+<li><p>重设文件创建掩模<br>进程从创建它的父进程那里继承了文件创建掩模。它可能修改守护进程所创建的文件的存取位。为防止这一点，将文件创建掩模清除：<code>umask(0)</code></p>
+</li>
+<li><p>处理SIGCHLD信号<br>处理SIGCHLD信号并不是必须的。但对于某些进程，特别是服务器进程往往在请求到来时生成子进程处理请求。如果父进程不等待子进程结束，子进程将成为僵尸进程（zombie）从而占用系统资源。如果父进程等待子进程结束，将增加父进程的负担，影响服务器进程的并发性能。在Linux下可以简单地将SIGCHLD信号的操作设为SIG_IGN。<br><code>signal(SIGCHLD,SIG_IGN)</code> </p>
+</li>
+</ul>
+<hr>
+<h3 id="3-孤儿进程-僵死进程"><a href="#3-孤儿进程-僵死进程" class="headerlink" title="3. 孤儿进程 僵死进程"></a>3. <strong>孤儿进程 僵死进程</strong></h3><p>两句话可以概括：</p>
+<ul>
+<li>孤儿进程: 父进程先于子进程退出，那么，该子进程就会成为孤儿进程，被init进程收养</li>
+<li>僵死进程：子进程退出时，父进程没有调用<code>wait()</code>或<code>waitpid()</code>函数，子进程的空间得不到释放，操作系统无法回收物理空间，造成内存泄漏。</li>
+</ul>
+<hr>
+<h3 id="4-进程优先级"><a href="#4-进程优先级" class="headerlink" title="4. 进程优先级"></a>4. <strong>进程优先级</strong></h3><p>调用nice()函数</p>
 
       
     </div>
@@ -496,7 +397,7 @@ CTRL-">
       
         <div class="post-tags">
           
-            <a href="/tags/bash/" rel="tag">#bash</a>
+            <a href="/tags/linux/" rel="tag">#linux</a>
           
         </div>
       
@@ -505,17 +406,13 @@ CTRL-">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/12/08/TCP-IP-网络编程-韩-尹圣雨/" rel="next" title="TCP/IP 网络编程  韩 [尹圣雨]">
-                <i class="fa fa-chevron-left"></i> TCP/IP 网络编程  韩 [尹圣雨]
+              <a href="/2016/11/07/io复用/" rel="next" title="I/O  复用  --  熟悉 API篇">
+                <i class="fa fa-chevron-left"></i> I/O  复用  --  熟悉 API篇
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/07/07/ubuntu-terminal-折腾/" rel="prev" title="ubuntu terminal 折腾">
-                ubuntu terminal 折腾 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -541,8 +438,8 @@ CTRL-">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/01/05/bash-shortcuts/"
-           data-title="bash shortcuts" data-url="http://beready.me/2015/01/05/bash-shortcuts/">
+      <div class="ds-thread" data-thread-key="2016/11/08/进程/"
+           data-title="进程" data-url="http://beready.me/2016/11/08/进程/">
       </div>
     
   </div>
@@ -644,7 +541,7 @@ CTRL-">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#bash-or-zsh-shortcuts"><span class="nav-number">1.</span> <span class="nav-text">bash  or zsh shortcuts</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-进程、进程组、会话"><span class="nav-number">1.</span> <span class="nav-text">1. 进程、进程组、会话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-守护进程的创建"><span class="nav-number">2.</span> <span class="nav-text">2. 守护进程的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-孤儿进程-僵死进程"><span class="nav-number">3.</span> <span class="nav-text">3. 孤儿进程 僵死进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-进程优先级"><span class="nav-number">4.</span> <span class="nav-text">4. 进程优先级</span></a></li></ol></div>
             
           </div>
         </section>
