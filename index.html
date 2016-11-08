@@ -269,7 +269,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/07/io复用/" itemprop="url">
+                <a class="post-title-link" href="/2015/10/07/io复用/" itemprop="url">
                   I/O  复用  --  熟悉 API篇
                 </a>
               
@@ -283,8 +283,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-07T01:22:01+08:00" content="2016-11-07">
-              2016-11-07
+            <time itemprop="dateCreated" datetime="2015-10-07T01:22:01+08:00" content="2015-10-07">
+              2015-10-07
             </time>
           </span>
 
@@ -352,111 +352,10 @@
 </tbody>
 </table>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/07/io复用/#more" rel="contents">
+            <a class="btn" href="/2015/10/07/io复用/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/07/线程池/" itemprop="url">
-                  线程池
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-07T01:20:25+08:00" content="2016-11-07">
-              2016-11-07
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/07/线程池/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/07/线程池/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>高性能网络库—-线程池</p>
-
-          
         
       
     </div>
@@ -1734,13 +1633,158 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/12/08/数据库设计范式/" itemprop="url">
+                  数据库设计范式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-12-08T13:58:45+08:00" content="2013-12-08">
+              2013-12-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/database/" itemprop="url" rel="index">
+                    <span itemprop="name">database</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/12/08/数据库设计范式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/12/08/数据库设计范式/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="三级范式"><a href="#三级范式" class="headerlink" title="三级范式"></a>三级范式</h3><ul>
+<li><p>1NF 的定义为：符合1NF的关系中的每个属性都不可再分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">理解：一范式就是属性不可分割</div></pre></td></tr></table></figure>
+</li>
+<li><p>2NF 在 1NF的基础之上，消除了非主属性对于码的部分函数依赖</p>
+<ul>
+<li><p>函数依赖： 若在一张表中，在属性（或属性组）X的值确定的情况下，必定能确定属性Y的值，那么就可以说Y函数依赖于X</p>
+<ul>
+<li>完全依赖</li>
+<li>部分依赖<ul>
+<li>传递依赖</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>码（键）设 K 为某表中的一个属性或属性组，若除 K 之外的所有属性都完全函数依赖于 K，那么我们称 K 为候选码，简称为码</p>
+</li>
+<li><p>非主属性</p>
+</li>
+<li><p>部分函数依赖</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">理解：二范式就是要有主键，要求其他字段都依赖于主键</div></pre></td></tr></table></figure>
+<ul>
+<li>第三范式（3NF）3NF在2NF的基础之上，消除了非主属性对于码的传递函数依赖<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">三范式就是要消除传递依赖，方便理解，可以看做是“消除冗余”</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="数据库的设计的改进"><a href="#数据库的设计的改进" class="headerlink" title="数据库的设计的改进"></a>数据库的设计的改进</h3><p>数据冗余过大，插入异常，修改异常，删除异常</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
 
 
           </div>
@@ -1779,7 +1823,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

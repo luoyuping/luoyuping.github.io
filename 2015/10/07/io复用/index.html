@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="linux_io," />
 
 
 
@@ -84,16 +84,70 @@
 
 
 
-<meta name="description" content="高性能网络库—-线程池">
+<meta name="description" content="横向比较
+
+
+
+函数原型
+
+
+
+
+select
+ int select(int nfds,fd_set* readfds,fd_set* writefds,fd_set* exceptfds,struct timeval* timeout )
+
+
+poll
+ int poll(struct pollfd* fds,nfds_t nfds,int timeout) 
+
+
+epoll
+ int epo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线程池">
-<meta property="og:url" content="http://beready.me/2016/11/07/线程池/index.html">
+<meta property="og:title" content="I/O  复用  --  熟悉 API篇">
+<meta property="og:url" content="http://beready.me/2015/10/07/io复用/index.html">
 <meta property="og:site_name" content="LYP's Blog">
-<meta property="og:description" content="高性能网络库—-线程池">
-<meta property="og:updated_time" content="2016-11-06T17:21:33.000Z">
+<meta property="og:description" content="横向比较
+
+
+
+函数原型
+
+
+
+
+select
+ int select(int nfds,fd_set* readfds,fd_set* writefds,fd_set* exceptfds,struct timeval* timeout )
+
+
+poll
+ int poll(struct pollfd* fds,nfds_t nfds,int timeout) 
+
+
+epoll
+ int epo">
+<meta property="og:updated_time" content="2016-11-08T08:45:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="线程池">
-<meta name="twitter:description" content="高性能网络库—-线程池">
+<meta name="twitter:title" content="I/O  复用  --  熟悉 API篇">
+<meta name="twitter:description" content="横向比较
+
+
+
+函数原型
+
+
+
+
+select
+ int select(int nfds,fd_set* readfds,fd_set* writefds,fd_set* exceptfds,struct timeval* timeout )
+
+
+poll
+ int poll(struct pollfd* fds,nfds_t nfds,int timeout) 
+
+
+epoll
+ int epo">
 
 
 
@@ -114,10 +168,10 @@
 
 
 
-  <link rel="canonical" href="http://beready.me/2016/11/07/线程池/"/>
+  <link rel="canonical" href="http://beready.me/2015/10/07/io复用/"/>
 
 
-  <title> 线程池 | LYP's Blog </title>
+  <title> I/O  复用  --  熟悉 API篇 | LYP's Blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -267,7 +321,7 @@
             
             
               
-                线程池
+                I/O  复用  --  熟悉 API篇
               
             
           </h1>
@@ -279,22 +333,32 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-07T01:20:25+08:00" content="2016-11-07">
-              2016-11-07
+            <time itemprop="dateCreated" datetime="2015-10-07T01:22:01+08:00" content="2015-10-07">
+              2015-10-07
             </time>
           </span>
 
           
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/07/线程池/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/07/线程池/" itemprop="commentsCount"></span>
-                </a>
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
               </span>
-            
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/unix-learning/" itemprop="url" rel="index">
+                    <span itemprop="name">unix learning</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
           
 
           
@@ -314,7 +378,53 @@
       
 
       
-        <p>高性能网络库—-线程池</p>
+        <h2 id="横向比较"><a href="#横向比较" class="headerlink" title="横向比较"></a>横向比较</h2><table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th>函数原型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">select</td>
+<td><strong> int select(int nfds,fd_set* readfds,fd_set* writefds,fd_set* exceptfds,struct timeval* timeout )</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">poll</td>
+<td><strong> int poll(struct pollfd* fds,nfds_t nfds,int timeout) </strong></td>
+</tr>
+<tr>
+<td style="text-align:left">epoll</td>
+<td><strong> int epoll(int epollfd,struct epoll_event* events,int maxevent,int timeout) </strong></td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p><strong>nfds</strong>: 指定被监听的文件符总数，通常传入被监听的文件符集合中的最大值 + 1<br><strong>fd_set</strong>: 该类型的定义，就不在这里贴上来，大体是，用长整形数组的每个元素的每一位来标识一个事件;<br>位操作过于繁琐，可用下列一系列的宏来操作fd_set 类型的结构体</p>
+<blockquote>
+<p>FD_ZERO(fd_set * select_fdset)   // 清除所有被标志的文件描述符<br>FD_SET(int fd,select_fdset)       // 将这个文件描述符，添加到sekect 的监听范围内<br>FD_CLR(int fd,select_fdset)      // 删除 这个文件描述符，不要被select 监听<br>FD_ISSET(int fd,select_fdset)  //测试这个文件描述符是否被添加到 select fd_set中</p>
+</blockquote>
+<h2 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h2><h3 id="struct-pollfd"><a href="#struct-pollfd" class="headerlink" title="struct pollfd"></a>struct pollfd</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> pollfd</div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> fd;</div><div class="line">	<span class="keyword">short</span> events;</div><div class="line">	<span class="keyword">short</span> revents;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="参数解释"><a href="#参数解释" class="headerlink" title="参数解释"></a>参数解释</h3><p><strong>pollfd</strong>： 是一个数组的地址，数组的每个元素，将一个文件描述符，和该文件描述符上调用者想要监听的事件与实际上发生了的事件，绑定在一块，和select 一样，每个事件用一个位来标识（<strong>联想hashset  的原理</strong>）</p>
+<p><strong> nfds_t </strong>: 数组长度<br><strong> timeout </strong>: </p>
+<h2 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h2><p><strong> epollfd </strong>: 是内核和用户联系的桥梁，epoll 操作 的标识<br>epollfd = epoll_create(int size)  //  size 是用户建议性给内核提示开多打的事件事件表</p>
+<p><strong> struct epoll_events </strong><br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">struct</span> epoll_event</div><div class="line">&#123; </div><div class="line">	<span class="keyword">_uint32_t</span>   events;</div><div class="line">	<span class="keyword">epoll_data_t</span> data;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">union</span> epoll_data</div><div class="line">&#123;	</div><div class="line">	<span class="keyword">void</span>* ptr ;  <span class="comment">//  指定fd 相关的用户数据</span></div><div class="line"> 	 <span class="keyword">int</span> fd;         <span class="comment">// 给联合体中使用最多的成员，指定事件的主人</span></div><div class="line">	<span class="keyword">uint32_t</span>	u32;</div><div class="line">	<span class="keyword">uint64_t</span>	u64;</div><div class="line">&#125; <span class="keyword">epoll_data_t</span>;</div></pre></td></tr></table></figure></p>
+<p> // 关于 ptr 的使用，我还没用过，后面补充吧 -_- ..<br><strong>MAXEVENT  :</strong>   数组的长度,类型 struct  epoll_event</p>
+<h2 id="事件-event"><a href="#事件-event" class="headerlink" title="事件  event"></a>事件  event</h2><p><em>以epoll 支持的事件为例</em></p>
+<p>常用：<br>EPOLLIN<br>EPOLLOUT<br>EPOLLRDHUP<br>EPOLLERR<br>EPOLLET<br>EPOLLONESHOT</p>
+<h2 id="三种I-O复用-宏观上的比较"><a href="#三种I-O复用-宏观上的比较" class="headerlink" title="三种I/O复用 宏观上的比较"></a>三种I/O复用 宏观上的比较</h2><p>select</p>
+<blockquote>
+<p>将事件和文件描述符没有结合起来，第一个参数代表文件描述符，后面三个参数代表它支持的三种事件:可读/可写/异常（接收带外数据），每次调用前，都得重置三个fd_set 集合</p>
+</blockquote>
+<p>poll</p>
+<blockquote>
+<p>将文件描述符和事件绑定在一块，作为数组传入，并且，它将要检测的事件，和实际内核修改的事件，分离开，相对select(),设计好多了。<br>用户通过pollfd.event 传入感兴趣的事件，内核通过修改 pollfd.revent 反馈 pollfd.fd 上发生的事件</p>
+</blockquote>
+<p>epoll</p>
+<blockquote>
+<p>跟上面两种方式完全不同，没有传入事件的过程。它在内核维护一个事件表，提供独立的系统调用epoll_ctl( )<br>来操作该事件表，这样，用户调用epoll_wait( …,event,…)来取得返回就绪的事件，复杂度达到n(1).</p>
+</blockquote>
 
       
     </div>
@@ -335,6 +445,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/linux-io/" rel="tag">#linux_io</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
@@ -347,10 +463,6 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/07/io复用/" rel="prev" title="I/O  复用  --  熟悉 API篇">
-                I/O  复用  --  熟悉 API篇 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -374,14 +486,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/11/07/线程池/"
-           data-title="线程池" data-url="http://beready.me/2016/11/07/线程池/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -422,7 +526,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -479,7 +583,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#横向比较"><span class="nav-number">1.</span> <span class="nav-text">横向比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#select"><span class="nav-number">2.</span> <span class="nav-text">select</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">2.1.</span> <span class="nav-text">参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#poll"><span class="nav-number">3.</span> <span class="nav-text">poll</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#struct-pollfd"><span class="nav-number">3.1.</span> <span class="nav-text">struct pollfd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数解释"><span class="nav-number">3.2.</span> <span class="nav-text">参数解释</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#epoll"><span class="nav-number">4.</span> <span class="nav-text">epoll</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件-event"><span class="nav-number">5.</span> <span class="nav-text">事件  event</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三种I-O复用-宏观上的比较"><span class="nav-number">6.</span> <span class="nav-text">三种I/O复用 宏观上的比较</span></a></li></ol></div>
             
           </div>
         </section>
