@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="terminal color scheme,zsh," />
+  <meta name="keywords" content="tcp/io," />
 
 
 
@@ -84,18 +84,46 @@
 
 
 
-<meta name="description" content="make your  gnome-terminal support 256 colors1234if [[ ($COLORTERM == gnome-terminal || $(cat /proc/$PPID/cmdline) == *gnome-terminal* )    &amp;amp;&amp;amp; $TERM != screen* ]]; then    export TERM=xterm-256">
+<meta name="description" content="TCP/IP 网络编程  韩 [尹圣雨]
+tcp  udp
+
+tcp 数据传输中，不存在边界，这表示： 数据传输过程中的I/O次数不具备任何意义\相反，UDP 是具有数据边界的协议，传输中调用i/o 函数的次数非常重要,输入调用的次数和输出调用的次数完全一致
+
+
+udp 为啥 比 tcp快？ tcp传输的数据可靠 而 udp传输的数据不可靠 ？
+
+
+优雅的断开套接字的连接
+shutdown(int">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ubuntu terminal 折腾">
-<meta property="og:url" content="http://beready.me/2015/07/07/ubuntu-terminal-折腾/index.html">
+<meta property="og:title" content="TCP/IP 网络编程  韩 [尹圣雨]">
+<meta property="og:url" content="http://beready.me/2014/12/08/TCP-IP-网络编程-韩-尹圣雨/index.html">
 <meta property="og:site_name" content="LYP's Blog">
-<meta property="og:description" content="make your  gnome-terminal support 256 colors1234if [[ ($COLORTERM == gnome-terminal || $(cat /proc/$PPID/cmdline) == *gnome-terminal* )    &amp;amp;&amp;amp; $TERM != screen* ]]; then    export TERM=xterm-256">
-<meta property="og:image" content="http://i3.tietuku.com/41139c18a4c467ba.png">
-<meta property="og:updated_time" content="2016-11-07T13:52:58.000Z">
+<meta property="og:description" content="TCP/IP 网络编程  韩 [尹圣雨]
+tcp  udp
+
+tcp 数据传输中，不存在边界，这表示： 数据传输过程中的I/O次数不具备任何意义\相反，UDP 是具有数据边界的协议，传输中调用i/o 函数的次数非常重要,输入调用的次数和输出调用的次数完全一致
+
+
+udp 为啥 比 tcp快？ tcp传输的数据可靠 而 udp传输的数据不可靠 ？
+
+
+优雅的断开套接字的连接
+shutdown(int">
+<meta property="og:updated_time" content="2016-11-08T05:25:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ubuntu terminal 折腾">
-<meta name="twitter:description" content="make your  gnome-terminal support 256 colors1234if [[ ($COLORTERM == gnome-terminal || $(cat /proc/$PPID/cmdline) == *gnome-terminal* )    &amp;amp;&amp;amp; $TERM != screen* ]]; then    export TERM=xterm-256">
-<meta name="twitter:image" content="http://i3.tietuku.com/41139c18a4c467ba.png">
+<meta name="twitter:title" content="TCP/IP 网络编程  韩 [尹圣雨]">
+<meta name="twitter:description" content="TCP/IP 网络编程  韩 [尹圣雨]
+tcp  udp
+
+tcp 数据传输中，不存在边界，这表示： 数据传输过程中的I/O次数不具备任何意义\相反，UDP 是具有数据边界的协议，传输中调用i/o 函数的次数非常重要,输入调用的次数和输出调用的次数完全一致
+
+
+udp 为啥 比 tcp快？ tcp传输的数据可靠 而 udp传输的数据不可靠 ？
+
+
+优雅的断开套接字的连接
+shutdown(int">
 
 
 
@@ -116,10 +144,10 @@
 
 
 
-  <link rel="canonical" href="http://beready.me/2015/07/07/ubuntu-terminal-折腾/"/>
+  <link rel="canonical" href="http://beready.me/2014/12/08/TCP-IP-网络编程-韩-尹圣雨/"/>
 
 
-  <title> ubuntu terminal 折腾 | LYP's Blog </title>
+  <title> TCP/IP 网络编程  韩 [尹圣雨] | LYP's Blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +297,7 @@
             
             
               
-                ubuntu terminal 折腾
+                TCP/IP 网络编程  韩 [尹圣雨]
               
             
           </h1>
@@ -281,8 +309,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-07T21:40:19+08:00" content="2015-07-07">
-              2015-07-07
+            <time itemprop="dateCreated" datetime="2014-12-08T13:22:39+08:00" content="2014-12-08">
+              2014-12-08
             </time>
           </span>
 
@@ -295,20 +323,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/tools/" itemprop="url" rel="index">
-                    <span itemprop="name">tools</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/tools/ubuntu/" itemprop="url" rel="index">
-                    <span itemprop="name">ubuntu</span>
+                  <a href="/categories/book/" itemprop="url" rel="index">
+                    <span itemprop="name">book</span>
                   </a>
                 </span>
 
@@ -323,8 +339,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/07/07/ubuntu-terminal-折腾/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/07/ubuntu-terminal-折腾/" itemprop="commentsCount"></span>
+                <a href="/2014/12/08/TCP-IP-网络编程-韩-尹圣雨/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/12/08/TCP-IP-网络编程-韩-尹圣雨/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -347,36 +363,61 @@
       
 
       
-        <p><strong>make your  gnome-terminal support 256 colors</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if [[ ($COLORTERM == gnome-terminal || $(cat /proc/$PPID/cmdline) == *gnome-terminal* )</div><div class="line">    &amp;&amp; $TERM != screen* ]]; then</div><div class="line">    export TERM=xterm-256color</div><div class="line">fi</div></pre></td></tr></table></figure></p>
-<p>关键是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export TERM=xterm-256color</div></pre></td></tr></table></figure>
-<p>如此配置仅在 GNOME Terminal 、且不在 screen/tmux 会话中时设置为 xterm-256color 。</p>
-<hr>
-<p><strong> bash ? ～～ no!    oh-my-zsh</strong><br>zsh 完全兼容 bash，首先把你的 bashrc 直接拷贝进zshrc<br>啥？你还是玩bash？那好吧，来，看个小视频<a href="https://www.youtube.com/watch?v=iINdaimyVds" target="_blank" rel="external">(点这，你得翻墙)</a><br>等等，zsh又得配置半天入门，好吧，来份oh-my-zsh<a href="http://ohmyz.sh/" target="_blank" rel="external">点这</a> </p>
-<h5 id="必要的插件安装："><a href="#必要的插件安装：" class="headerlink" title="必要的插件安装："></a>必要的插件安装：</h5><ul>
-<li>git</li>
-<li>autojump (记录最近使用过的目录，跳转极为方便，使用方法自行google)</li>
-</ul>
-<h5 id="zsh-主题："><a href="#zsh-主题：" class="headerlink" title="zsh 主题："></a>zsh 主题：</h5><p>我用的是 robbyrussell,  agnoster 看起来比较牛逼（我目前没有成功安装，装了字体拓展还是不行，见鬼）</p>
-<hr>
-<p><strong>终端配色丑？-_-</strong><br>我用的是 gnome-terminal ，我就讲我的配置的步骤</p>
-<ul>
-<li>首先，终端的配色用的是这个哥们的（@_@)  <a href="https://github.com/Anthony25/gnome-terminal-colors-solarized.git" target="_blank" rel="external">https://github.com/Anthony25/gnome-terminal-colors-solarized.git</a><br>具体的安装方法，作者讲的非常清楚<br><strong>但是需要注意的</strong><ul>
-<li>最好新建一份profile,在新的profile 里面进行配色的安装（menu -&gt;edit-&gt;profiles-&gt;new）</li>
-<li>我安装好了后，出现了一个诡异的问题，配色的效果达不到作者的截图，这就比较恼人了，想回退到用自己原来的配色方案，发现menu 栏不见了，想从命令行把他调出，google无果，其实鼠标右键就能调出meun ;接着解决问题，配色达不到理想，其实问题的原因是，原来的配色的配置（具体是透明度）发生了干扰，调整之后就好了，汗（差点放弃）</li>
-<li>效果是这样的<br><img src="http://i3.tietuku.com/41139c18a4c467ba.png" alt=""><br>还行，但不满意他的透明度，调整gnome-terminal 的透明度无效，原因应该是具体的配色源文件颜色数值的问题，以后折腾</li>
-</ul>
+        <h1 id="TCP-IP-网络编程-韩-尹圣雨"><a href="#TCP-IP-网络编程-韩-尹圣雨" class="headerlink" title="TCP/IP 网络编程  韩 [尹圣雨]"></a>TCP/IP 网络编程  韩 [尹圣雨]</h1><ul>
+<li><p>tcp  udp</p>
+<blockquote>
+<p>tcp 数据传输中，不存在边界，这表示： 数据传输过程中的I/O次数不具备任何意义<br>\<br>相反，UDP 是具有数据边界的协议，传输中调用i/o 函数的次数非常重要,输入调用的次数和输出调用的次数完全一致</p>
+</blockquote>
 </li>
-<li>隐藏user@hostname,方法是在<strong>.zshrc</strong> 中加入如下的一句<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export DEFAULT_USER=`whoami`</div></pre></td></tr></table></figure>
+<li><p>udp 为啥 比 tcp快？ tcp传输的数据可靠 而 udp传输的数据不可靠 ？</p>
 </li>
 </ul>
-<hr>
-<p>参考：</p>
-<ul>
-<li><a href="https://blog.robotshell.org/2014/enable-256-color-in-gnome-terminal/" target="_blank" rel="external">https://blog.robotshell.org/2014/enable-256-color-in-gnome-terminal/</a> </li>
+<h2 id="优雅的断开套接字的连接"><a href="#优雅的断开套接字的连接" class="headerlink" title="优雅的断开套接字的连接"></a>优雅的断开套接字的连接</h2><ul>
+<li><p>shutdown(int fd,int howto)<br>参数：<br>SHUT_RD 断开输入流<br>SHUT_WR  断开输出流<br>SHUT_RDWR  同时断开输入输出流</p>
+</li>
+<li><p>为啥需要半关闭 ？<br><a href="http://blog.chinaunix.net/uid-29075379-id-3896846.html" target="_blank" rel="external">这篇文章介绍了 close(fd) 和shutdown(fd,SHUT_RDWR)的区别 </a></p>
+</li>
 </ul>
-<hr>
-<p>PS : 后续随时补充完善continue。。。</p>
+<h2 id="套接字I-O-方式"><a href="#套接字I-O-方式" class="headerlink" title="套接字I/O 方式"></a>套接字I/O 方式</h2><ul>
+<li>read()/write() | send()/recv()<blockquote>
+<p>read()/write() 对任何文件描述符 都可以进行I/O 操作<br>send() /recv() 只能对套接字描述符操作<br>send()/recv() 可以设置flag<br>read()/write() 要对套接字进行flag  设置 ，得借助fcntl() 函数</p>
+</blockquote>
+</li>
+<li>readv()/writev() | recvmsg()/sendmsg() <blockquote>
+<p>都有多个 I/O缓冲区（用户空间）<br>readv()/writev() 操作简单些</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="套接字-标准i-o-和系统i-o的性能比较"><a href="#套接字-标准i-o-和系统i-o的性能比较" class="headerlink" title="套接字 标准i/o 和系统i/o的性能比较"></a>套接字 标准i/o 和系统i/o的性能比较</h2><ul>
+<li>第一点 操作I/O的方式肯定不一样<br>自己先总结下 套接字 I/O  vs 标准 I/O</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">系统I/O</th>
+<th style="text-align:right">标准I/O</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>缓冲区对I/O性能的影响<ul>
+<li>标准I/O 提供缓冲机制，减少了系统 I/O调用的次数,但是，为了将数据及时写入磁    盘，用户得手动调用fflush() 将数据写入磁盘,这就提供了一些隐患</li>
+<li>对于系统调用 应将数据缓冲区尽量定义为 磁盘扇区的整数倍（也不能太大，内存浪费）</li>
+</ul>
+</li>
+</ul>
+<h2 id="I-O-分离"><a href="#I-O-分离" class="headerlink" title="I/O 分离"></a>I/O 分离</h2><h2 id="条件触发-边缘触发-优劣？"><a href="#条件触发-边缘触发-优劣？" class="headerlink" title="条件触发 边缘触发   优劣？"></a>条件触发 边缘触发   优劣？</h2><p><a href="http://www.zhihu.com/question/20502870" target="_blank" rel="external">先看一个知乎讨论的链接</a><br><a href="http://blog.aliyun.com/719" target="_blank" rel="external">阿里陶辉的一篇文章</a></p>
+<ul>
+<li>理论上 LT 慢于 ET  但是没有数据表明 这种差距 ，而且 ET 的控制 比 LT  麻烦<ul>
+<li>早期并没有 LT的触发模式</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -399,9 +440,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/terminal-color-scheme/" rel="tag">#terminal color scheme</a>
-          
-            <a href="/tags/zsh/" rel="tag">#zsh</a>
+            <a href="/tags/tcp-io/" rel="tag">#tcp/io</a>
           
         </div>
       
@@ -410,16 +449,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/01/05/bash-shortcuts/" rel="next" title="bash shortcuts">
-                <i class="fa fa-chevron-left"></i> bash shortcuts
+              <a href="/2014/06/07/socket-理解/" rel="next" title="socket 理解">
+                <i class="fa fa-chevron-left"></i> socket 理解
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/07/线程池/" rel="prev" title="线程池">
-                线程池 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/01/05/bash-shortcuts/" rel="prev" title="bash shortcuts">
+                bash shortcuts <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -446,8 +485,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/07/07/ubuntu-terminal-折腾/"
-           data-title="ubuntu terminal 折腾" data-url="http://beready.me/2015/07/07/ubuntu-terminal-折腾/">
+      <div class="ds-thread" data-thread-key="2014/12/08/TCP-IP-网络编程-韩-尹圣雨/"
+           data-title="TCP/IP 网络编程  韩 [尹圣雨]" data-url="http://beready.me/2014/12/08/TCP-IP-网络编程-韩-尹圣雨/">
       </div>
     
   </div>
@@ -549,7 +588,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#必要的插件安装："><span class="nav-number">1.</span> <span class="nav-text">必要的插件安装：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#zsh-主题："><span class="nav-number">2.</span> <span class="nav-text">zsh 主题：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-IP-网络编程-韩-尹圣雨"><span class="nav-number">1.</span> <span class="nav-text">TCP/IP 网络编程  韩 [尹圣雨]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优雅的断开套接字的连接"><span class="nav-number">1.1.</span> <span class="nav-text">优雅的断开套接字的连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#套接字I-O-方式"><span class="nav-number">1.2.</span> <span class="nav-text">套接字I/O 方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#套接字-标准i-o-和系统i-o的性能比较"><span class="nav-number">1.3.</span> <span class="nav-text">套接字 标准i/o 和系统i/o的性能比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-O-分离"><span class="nav-number">1.4.</span> <span class="nav-text">I/O 分离</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件触发-边缘触发-优劣？"><span class="nav-number">1.5.</span> <span class="nav-text">条件触发 边缘触发   优劣？</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

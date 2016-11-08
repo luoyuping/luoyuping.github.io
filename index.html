@@ -871,6 +871,180 @@
             
               
                 
+                <a class="post-title-link" href="/2014/12/08/TCP-IP-网络编程-韩-尹圣雨/" itemprop="url">
+                  TCP/IP 网络编程  韩 [尹圣雨]
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-12-08T13:22:39+08:00" content="2014-12-08">
+              2014-12-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/book/" itemprop="url" rel="index">
+                    <span itemprop="name">book</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/12/08/TCP-IP-网络编程-韩-尹圣雨/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/12/08/TCP-IP-网络编程-韩-尹圣雨/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="TCP-IP-网络编程-韩-尹圣雨"><a href="#TCP-IP-网络编程-韩-尹圣雨" class="headerlink" title="TCP/IP 网络编程  韩 [尹圣雨]"></a>TCP/IP 网络编程  韩 [尹圣雨]</h1><ul>
+<li><p>tcp  udp</p>
+<blockquote>
+<p>tcp 数据传输中，不存在边界，这表示： 数据传输过程中的I/O次数不具备任何意义<br>\<br>相反，UDP 是具有数据边界的协议，传输中调用i/o 函数的次数非常重要,输入调用的次数和输出调用的次数完全一致</p>
+</blockquote>
+</li>
+<li><p>udp 为啥 比 tcp快？ tcp传输的数据可靠 而 udp传输的数据不可靠 ？</p>
+</li>
+</ul>
+<h2 id="优雅的断开套接字的连接"><a href="#优雅的断开套接字的连接" class="headerlink" title="优雅的断开套接字的连接"></a>优雅的断开套接字的连接</h2><ul>
+<li><p>shutdown(int fd,int howto)<br>参数：<br>SHUT_RD 断开输入流<br>SHUT_WR  断开输出流<br>SHUT_RDWR  同时断开输入输出流</p>
+</li>
+<li><p>为啥需要半关闭 ？<br><a href="http://blog.chinaunix.net/uid-29075379-id-3896846.html" target="_blank" rel="external">这篇文章介绍了 close(fd) 和shutdown(fd,SHUT_RDWR)的区别 </a></p>
+</li>
+</ul>
+<h2 id="套接字I-O-方式"><a href="#套接字I-O-方式" class="headerlink" title="套接字I/O 方式"></a>套接字I/O 方式</h2><ul>
+<li>read()/write() | send()/recv()<blockquote>
+<p>read()/write() 对任何文件描述符 都可以进行I/O 操作<br>send() /recv() 只能对套接字描述符操作<br>send()/recv() 可以设置flag<br>read()/write() 要对套接字进行flag  设置 ，得借助fcntl() 函数</p>
+</blockquote>
+</li>
+<li>readv()/writev() | recvmsg()/sendmsg() <blockquote>
+<p>都有多个 I/O缓冲区（用户空间）<br>readv()/writev() 操作简单些</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="套接字-标准i-o-和系统i-o的性能比较"><a href="#套接字-标准i-o-和系统i-o的性能比较" class="headerlink" title="套接字 标准i/o 和系统i/o的性能比较"></a>套接字 标准i/o 和系统i/o的性能比较</h2><ul>
+<li>第一点 操作I/O的方式肯定不一样<br>自己先总结下 套接字 I/O  vs 标准 I/O</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">系统I/O</th>
+<th style="text-align:right">标准I/O</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>缓冲区对I/O性能的影响<ul>
+<li>标准I/O 提供缓冲机制，减少了系统 I/O调用的次数,但是，为了将数据及时写入磁    盘，用户得手动调用fflush() 将数据写入磁盘,这就提供了一些隐患</li>
+<li>对于系统调用 应将数据缓冲区尽量定义为 磁盘扇区的整数倍（也不能太大，内存浪费）</li>
+</ul>
+</li>
+</ul>
+<h2 id="I-O-分离"><a href="#I-O-分离" class="headerlink" title="I/O 分离"></a>I/O 分离</h2><h2 id="条件触发-边缘触发-优劣？"><a href="#条件触发-边缘触发-优劣？" class="headerlink" title="条件触发 边缘触发   优劣？"></a>条件触发 边缘触发   优劣？</h2><p><a href="http://www.zhihu.com/question/20502870" target="_blank" rel="external">先看一个知乎讨论的链接</a><br><a href="http://blog.aliyun.com/719" target="_blank" rel="external">阿里陶辉的一篇文章</a></p>
+<ul>
+<li>理论上 LT 慢于 ET  但是没有数据表明 这种差距 ，而且 ET 的控制 比 LT  麻烦<ul>
+<li>早期并没有 LT的触发模式</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2014/06/07/socket-理解/" itemprop="url">
                   socket 理解
                 </a>
@@ -1018,7 +1192,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1026,7 +1200,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1035,7 +1209,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
