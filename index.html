@@ -299,6 +299,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -334,8 +353,9 @@
 <li>验证调用合法性</li>
 <li>防篡改 ,包括request 和response</li>
 <li>防重放（DDOS)</li>
-<li>防读<br><em>等</em></li>
+<li>防读</li>
 </ul>
+<p><em>等</em></p>
 <h2 id="HOW"><a href="#HOW" class="headerlink" title="HOW?"></a>HOW?</h2><p><strong>做签名</strong><br>client 选取request的需要防篡改的参数拼接random key按一定的算法生成salt（sign),服务端按照相同的方式（服务端保存了秘钥), 生成salt(sign),匹配下是否是一致</p>
 <h4 id="几个问题"><a href="#几个问题" class="headerlink" title="几个问题"></a>几个问题</h4><p>1 token 何时下发？ </p>
 <blockquote>
@@ -1179,7 +1199,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
