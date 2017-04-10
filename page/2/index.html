@@ -279,6 +279,167 @@
             
               
                 
+                <a class="post-title-link" href="/2015/07/07/ubuntu-terminal-折腾/" itemprop="url">
+                  ubuntu terminal 折腾
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-07-07T21:40:19+08:00" content="2015-07-07">
+              2015-07-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/tools/" itemprop="url" rel="index">
+                    <span itemprop="name">tools</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/tools/ubuntu/" itemprop="url" rel="index">
+                    <span itemprop="name">ubuntu</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/07/07/ubuntu-terminal-折腾/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/07/ubuntu-terminal-折腾/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>make your  gnome-terminal support 256 colors</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if [[ ($COLORTERM == gnome-terminal || $(cat /proc/$PPID/cmdline) == *gnome-terminal* )</div><div class="line">    &amp;&amp; $TERM != screen* ]]; then</div><div class="line">    export TERM=xterm-256color</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>关键是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export TERM=xterm-256color</div></pre></td></tr></table></figure>
+<p>如此配置仅在 GNOME Terminal 、且不在 screen/tmux 会话中时设置为 xterm-256color 。</p>
+<hr>
+<p><strong> bash ? ～～ no!    oh-my-zsh</strong><br>zsh 完全兼容 bash，首先把你的 bashrc 直接拷贝进zshrc<br>啥？你还是玩bash？那好吧，来，看个小视频<a href="https://www.youtube.com/watch?v=iINdaimyVds" target="_blank" rel="external">(点这，你得翻墙)</a><br>等等，zsh又得配置半天入门，好吧，来份oh-my-zsh<a href="http://ohmyz.sh/" target="_blank" rel="external">点这</a> </p>
+<h5 id="必要的插件安装："><a href="#必要的插件安装：" class="headerlink" title="必要的插件安装："></a>必要的插件安装：</h5><ul>
+<li>git</li>
+<li>autojump (记录最近使用过的目录，跳转极为方便，使用方法自行google)</li>
+</ul>
+<h5 id="zsh-主题："><a href="#zsh-主题：" class="headerlink" title="zsh 主题："></a>zsh 主题：</h5><p>我用的是 robbyrussell,  agnoster 看起来比较牛逼（我目前没有成功安装，装了字体拓展还是不行，见鬼）</p>
+<hr>
+<p><strong>终端配色丑？-_-</strong><br>我用的是 gnome-terminal ，我就讲我的配置的步骤</p>
+<ul>
+<li>首先，终端的配色用的是这个哥们的（@_@)  <a href="https://github.com/Anthony25/gnome-terminal-colors-solarized.git" target="_blank" rel="external">https://github.com/Anthony25/gnome-terminal-colors-solarized.git</a><br>具体的安装方法，作者讲的非常清楚<br><strong>但是需要注意的</strong><ul>
+<li>最好新建一份profile,在新的profile 里面进行配色的安装（menu -&gt;edit-&gt;profiles-&gt;new）</li>
+<li>我安装好了后，出现了一个诡异的问题，配色的效果达不到作者的截图，这就比较恼人了，想回退到用自己原来的配色方案，发现menu 栏不见了，想从命令行把他调出，google无果，其实鼠标右键就能调出meun ;接着解决问题，配色达不到理想，其实问题的原因是，原来的配色的配置（具体是透明度）发生了干扰，调整之后就好了，汗（差点放弃）</li>
+<li>效果是这样的<br><img src="http://i3.tietuku.com/41139c18a4c467ba.png" alt=""><br>还行，但不满意他的透明度，调整gnome-terminal 的透明度无效，原因应该是具体的配色源文件颜色数值的问题，以后折腾</li>
+</ul>
+</li>
+<li>隐藏user@hostname,方法是在<strong>.zshrc</strong> 中加入如下的一句<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export DEFAULT_USER=`whoami`</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<p>参考：</p>
+<ul>
+<li><a href="https://blog.robotshell.org/2014/enable-256-color-in-gnome-terminal/" target="_blank" rel="external">https://blog.robotshell.org/2014/enable-256-color-in-gnome-terminal/</a> </li>
+</ul>
+<hr>
+<p>PS : 后续随时补充完善continue。。。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/01/05/bash-shortcuts/" itemprop="url">
                   bash shortcuts
                 </a>
@@ -1066,152 +1227,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/05/08/进程/" itemprop="url">
-                  进程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-05-08T13:47:49+08:00" content="2014-05-08">
-              2014-05-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/总结/" itemprop="url" rel="index">
-                    <span itemprop="name">总结</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/05/08/进程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/05/08/进程/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1-进程、进程组、会话"><a href="#1-进程、进程组、会话" class="headerlink" title="1. 进程、进程组、会话"></a>1. <strong>进程、进程组、会话</strong></h3><p>  进程(process)属于进程组(group)，进程组属于会话(session)</p>
-<hr>
-<h3 id="2-守护进程的创建"><a href="#2-守护进程的创建" class="headerlink" title="2. 守护进程的创建"></a>2. <strong>守护进程的创建</strong></h3><ul>
-<li><p>父进程 fork() 产生子进程,父进程退出.这样做保证即将要成为会话组长的进程，调用setsid()能调用成功</p>
-</li>
-<li><p>父进程先于子进程退出后，子进程，被init进程收养，调用setsid(),脱离init进程控制，成为会话组长,并与原来的登录会话和进程组脱离,同时脱离终端的控制。</p>
-</li>
-<li><p>会话组长可以重新代开控制终端，那么可以使该进程再fork（）一次，然后父进程退出，产生的子进程被init进程收养，最终，得到的进程，具备: <strong>脱离终端控制，处在于一个新的会话组,并且不是会话组长</strong></p>
-</li>
-<li><p>关闭所有从父进程继承的不再需要的文件描述符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">for (int i = 0;  i &lt; NOFILE; ++ i)                                   </div><div class="line">&#123;</div><div class="line">         close(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>改变当前工作目录<br>进程活动时，其工作目录所在的文件系统不能卸下。一般需要将工作目录改变到根目录。对于需要转储核心，写运行日志的进程将工作目录改变到特定目录如/tmp,调用 <code>chdir(&quot;/&quot;)</code></p>
-</li>
-<li><p>重设文件创建掩模<br>进程从创建它的父进程那里继承了文件创建掩模。它可能修改守护进程所创建的文件的存取位。为防止这一点，将文件创建掩模清除：<code>umask(0)</code></p>
-</li>
-<li><p>处理SIGCHLD信号<br>处理SIGCHLD信号并不是必须的。但对于某些进程，特别是服务器进程往往在请求到来时生成子进程处理请求。如果父进程不等待子进程结束，子进程将成为僵尸进程（zombie）从而占用系统资源。如果父进程等待子进程结束，将增加父进程的负担，影响服务器进程的并发性能。在Linux下可以简单地将SIGCHLD信号的操作设为SIG_IGN。<br><code>signal(SIGCHLD,SIG_IGN)</code> </p>
-</li>
-</ul>
-<hr>
-<h3 id="3-孤儿进程-僵死进程"><a href="#3-孤儿进程-僵死进程" class="headerlink" title="3. 孤儿进程 僵死进程"></a>3. <strong>孤儿进程 僵死进程</strong></h3><p>两句话可以概括：</p>
-<ul>
-<li>孤儿进程: 父进程先于子进程退出，那么，该子进程就会成为孤儿进程，被init进程收养</li>
-<li>僵死进程：子进程退出时，父进程没有调用<code>wait()</code>或<code>waitpid()</code>函数，子进程的空间得不到释放，操作系统无法回收物理空间，造成内存泄漏。</li>
-</ul>
-<hr>
-<h3 id="4-进程优先级"><a href="#4-进程优先级" class="headerlink" title="4. 进程优先级"></a>4. <strong>进程优先级</strong></h3><p>调用nice()函数</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1257,7 +1272,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1274,7 +1289,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

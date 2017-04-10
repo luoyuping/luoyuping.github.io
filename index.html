@@ -279,6 +279,147 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/10/web-interface-security-design/" itemprop="url">
+                  web interface security design
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-10T12:19:25+08:00" content="2017-04-10">
+              2017-04-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/10/web-interface-security-design/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/10/web-interface-security-design/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="web-api安全性需要考虑的内容"><a href="#web-api安全性需要考虑的内容" class="headerlink" title="web api安全性需要考虑的内容"></a>web api安全性需要考虑的内容</h2><ul>
+<li>验证调用合法性</li>
+<li>防篡改 ,包括request 和response</li>
+<li>防重放（DDOS)</li>
+<li>防读<br><em>等</em></li>
+</ul>
+<h2 id="HOW"><a href="#HOW" class="headerlink" title="HOW?"></a>HOW?</h2><p><strong>做签名</strong><br>client 选取request的需要防篡改的参数拼接random key按一定的算法生成salt（sign),服务端按照相同的方式（服务端保存了秘钥), 生成salt(sign),匹配下是否是一致</p>
+<h4 id="几个问题"><a href="#几个问题" class="headerlink" title="几个问题"></a>几个问题</h4><p>1 token 何时下发？ </p>
+<blockquote>
+<p>分需要登陆型APP，以及非登陆型APP;登陆型app在登陆成功后，把token下发给client，非登陆型就需要一个专门下发token的接口</p>
+</blockquote>
+<p>2 token 下发如何保护？</p>
+<blockquote>
+<p>要保证一般的客户端-服务器通信安全，可以使用3个密钥。<br><em>初始密钥</em>是第一个，内置到app，保证最初的通信安全，用来加密-“主加密密钥”。此过程中的传输，是最容易被攻击的环节，可以采用其他辅助方式进行加密, 如HTTPS等。<br>其次是<em>主加密密钥</em>， 系统初始化之后从服务端获取生成。保存在客户端。重复利用。用来加密通信密钥。也可以由用户主动更新。<br>还有第三个是<em>通信密钥</em>，每次登陆更新，或者定期更换，用来加密通信数据。 此密钥的传输过程使用主加密密钥来加密。<br>通信密钥就是用来加密通信数据的。 </p>
+</blockquote>
+<p>3 token 有效期？</p>
+<ul>
+<li>只用一次</li>
+<li>设置一段时间有效</li>
+</ul>
+<p>4 签名算法暴露在客户端？</p>
+<ul>
+<li>对于安卓客户端来说，签名的生成算法是用C写，二进制的反编译的难道高</li>
+<li>对于web page，JS混淆难度高，也是容易破解的<br>所以这套机制适合于基于定制浏览器的app或者原生的的app</li>
+</ul>
+<h4 id="补充机制"><a href="#补充机制" class="headerlink" title="补充机制"></a>补充机制</h4><ul>
+<li>给请求加上timestamp。timestamp 是请求的有效截止响应时间，就是后台先提取这个时间，如果后台发现这个时间大于当前的系统时间，就拒绝响应</li>
+<li>整套机制的实现成本高，可以考虑剪裁机制，做到一定的保护</li>
+</ul>
+<h4 id="机制实现的难点"><a href="#机制实现的难点" class="headerlink" title="机制实现的难点"></a>机制实现的难点</h4><ul>
+<li>服务降级</li>
+<li>监控</li>
+</ul>
+<h2 id="salt-生成算法的选择"><a href="#salt-生成算法的选择" class="headerlink" title="salt 生成算法的选择"></a>salt 生成算法的选择</h2><ul>
+<li>SHA</li>
+<li>md5</li>
+<li>AES</li>
+</ul>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="http://www.jianshu.com/p/c6518a8f4040" target="_blank" rel="external">API接口安全性设计</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/02/08/2017-s-plan/" itemprop="url">
                   2017's plan
                 </a>
@@ -977,167 +1118,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/07/ubuntu-terminal-折腾/" itemprop="url">
-                  ubuntu terminal 折腾
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-07T21:40:19+08:00" content="2015-07-07">
-              2015-07-07
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/tools/" itemprop="url" rel="index">
-                    <span itemprop="name">tools</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/tools/ubuntu/" itemprop="url" rel="index">
-                    <span itemprop="name">ubuntu</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/07/07/ubuntu-terminal-折腾/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/07/ubuntu-terminal-折腾/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>make your  gnome-terminal support 256 colors</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if [[ ($COLORTERM == gnome-terminal || $(cat /proc/$PPID/cmdline) == *gnome-terminal* )</div><div class="line">    &amp;&amp; $TERM != screen* ]]; then</div><div class="line">    export TERM=xterm-256color</div><div class="line">fi</div></pre></td></tr></table></figure></p>
-<p>关键是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export TERM=xterm-256color</div></pre></td></tr></table></figure>
-<p>如此配置仅在 GNOME Terminal 、且不在 screen/tmux 会话中时设置为 xterm-256color 。</p>
-<hr>
-<p><strong> bash ? ～～ no!    oh-my-zsh</strong><br>zsh 完全兼容 bash，首先把你的 bashrc 直接拷贝进zshrc<br>啥？你还是玩bash？那好吧，来，看个小视频<a href="https://www.youtube.com/watch?v=iINdaimyVds" target="_blank" rel="external">(点这，你得翻墙)</a><br>等等，zsh又得配置半天入门，好吧，来份oh-my-zsh<a href="http://ohmyz.sh/" target="_blank" rel="external">点这</a> </p>
-<h5 id="必要的插件安装："><a href="#必要的插件安装：" class="headerlink" title="必要的插件安装："></a>必要的插件安装：</h5><ul>
-<li>git</li>
-<li>autojump (记录最近使用过的目录，跳转极为方便，使用方法自行google)</li>
-</ul>
-<h5 id="zsh-主题："><a href="#zsh-主题：" class="headerlink" title="zsh 主题："></a>zsh 主题：</h5><p>我用的是 robbyrussell,  agnoster 看起来比较牛逼（我目前没有成功安装，装了字体拓展还是不行，见鬼）</p>
-<hr>
-<p><strong>终端配色丑？-_-</strong><br>我用的是 gnome-terminal ，我就讲我的配置的步骤</p>
-<ul>
-<li>首先，终端的配色用的是这个哥们的（@_@)  <a href="https://github.com/Anthony25/gnome-terminal-colors-solarized.git" target="_blank" rel="external">https://github.com/Anthony25/gnome-terminal-colors-solarized.git</a><br>具体的安装方法，作者讲的非常清楚<br><strong>但是需要注意的</strong><ul>
-<li>最好新建一份profile,在新的profile 里面进行配色的安装（menu -&gt;edit-&gt;profiles-&gt;new）</li>
-<li>我安装好了后，出现了一个诡异的问题，配色的效果达不到作者的截图，这就比较恼人了，想回退到用自己原来的配色方案，发现menu 栏不见了，想从命令行把他调出，google无果，其实鼠标右键就能调出meun ;接着解决问题，配色达不到理想，其实问题的原因是，原来的配色的配置（具体是透明度）发生了干扰，调整之后就好了，汗（差点放弃）</li>
-<li>效果是这样的<br><img src="http://i3.tietuku.com/41139c18a4c467ba.png" alt=""><br>还行，但不满意他的透明度，调整gnome-terminal 的透明度无效，原因应该是具体的配色源文件颜色数值的问题，以后折腾</li>
-</ul>
-</li>
-<li>隐藏user@hostname,方法是在<strong>.zshrc</strong> 中加入如下的一句<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export DEFAULT_USER=`whoami`</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<p>参考：</p>
-<ul>
-<li><a href="https://blog.robotshell.org/2014/enable-256-color-in-gnome-terminal/" target="_blank" rel="external">https://blog.robotshell.org/2014/enable-256-color-in-gnome-terminal/</a> </li>
-</ul>
-<hr>
-<p>PS : 后续随时补充完善continue。。。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1183,7 +1163,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1200,7 +1180,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
