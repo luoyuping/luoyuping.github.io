@@ -108,7 +108,7 @@ HOW?做签名client 选取request的需要防篡改的参数拼接random key按�
 几个问题1 token 何时下发？ 
 
 分需要登陆型A">
-<meta property="og:updated_time" content="2017-04-10T07:02:15.000Z">
+<meta property="og:updated_time" content="2017-04-10T07:04:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="web api 接口安全设计探讨">
 <meta name="twitter:description" content="web api安全性需要考虑的内容
@@ -376,7 +376,10 @@ HOW?做签名client 选取request的需要防篡改的参数拼接random key按�
 <li>对于安卓客户端来说，签名的生成算法是用C写，二进制的反编译的难道高</li>
 <li>对于web page，JS混淆难度高，也是容易破解的<br>所以这套机制适合于基于定制浏览器的app或者原生的的app</li>
 </ul>
-<p>5 token表的存储<br> token的存储可以通过用户或者设备的id来进行映射，所以请求里面需要携带表示用户或者设备的id</p>
+<p>5 token表的存储</p>
+<blockquote>
+<p>token的存储可以通过用户或者设备的id来进行映射，所以请求里面需要携带表示用户或者设备的id</p>
+</blockquote>
 <h4 id="补充机制"><a href="#补充机制" class="headerlink" title="补充机制"></a>补充机制</h4><ul>
 <li>给请求加上timestamp。timestamp 是请求的有效截止响应时间，就是后台先提取这个时间，如果后台发现这个时间大于当前的系统时间，就拒绝响应,起到防部分重放攻击的作用</li>
 <li>整套机制的实现成本高，可以考虑剪裁机制，做到一定的保护</li>
