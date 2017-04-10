@@ -280,7 +280,7 @@
               
                 
                 <a class="post-title-link" href="/2017/04/10/web-interface-security-design/" itemprop="url">
-                  web interface security design
+                  web api 接口安全设计探讨
                 </a>
               
             
@@ -355,21 +355,26 @@
 <li>对于安卓客户端来说，签名的生成算法是用C写，二进制的反编译的难道高</li>
 <li>对于web page，JS混淆难度高，也是容易破解的<br>所以这套机制适合于基于定制浏览器的app或者原生的的app</li>
 </ul>
+<p>5 token表的存储<br> token的存储可以通过用户或者设备的id来进行映射，所以请求里面需要携带表示用户或者设备的id</p>
 <h4 id="补充机制"><a href="#补充机制" class="headerlink" title="补充机制"></a>补充机制</h4><ul>
-<li>给请求加上timestamp。timestamp 是请求的有效截止响应时间，就是后台先提取这个时间，如果后台发现这个时间大于当前的系统时间，就拒绝响应</li>
+<li>给请求加上timestamp。timestamp 是请求的有效截止响应时间，就是后台先提取这个时间，如果后台发现这个时间大于当前的系统时间，就拒绝响应,起到防部分重放攻击的作用</li>
 <li>整套机制的实现成本高，可以考虑剪裁机制，做到一定的保护</li>
 </ul>
 <h4 id="机制实现的难点"><a href="#机制实现的难点" class="headerlink" title="机制实现的难点"></a>机制实现的难点</h4><ul>
 <li>服务降级</li>
 <li>监控</li>
 </ul>
-<h2 id="salt-生成算法的选择"><a href="#salt-生成算法的选择" class="headerlink" title="salt 生成算法的选择"></a>salt 生成算法的选择</h2><ul>
+<h4 id="salt-生成算法的选择"><a href="#salt-生成算法的选择" class="headerlink" title="salt 生成算法的选择"></a>salt 生成算法的选择</h4><ul>
 <li>SHA</li>
 <li>md5</li>
 <li>AES</li>
 </ul>
+<h2 id="业内动向"><a href="#业内动向" class="headerlink" title="业内动向"></a>业内动向</h2><ul>
+<li>JWT(JSON Web Token) <a href="https://jwt.io/introduction/" target="_blank" rel="external">官网直达</a></li>
+</ul>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
 <li><a href="http://www.jianshu.com/p/c6518a8f4040" target="_blank" rel="external">API接口安全性设计</a></li>
+<li><a href="http://blog.nsfocus.net/rest-api-design-safety/" target="_blank" rel="external">REST API 安全设计指南</a></li>
 </ul>
 
           
