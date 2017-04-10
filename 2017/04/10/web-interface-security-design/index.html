@@ -110,7 +110,7 @@ HOW?做签名client 选取request的需要防篡改的参数拼接random key按�
 几个问题1 token 何时下发？ 
 
 分需要登陆型">
-<meta property="og:updated_time" content="2017-04-10T07:06:33.000Z">
+<meta property="og:updated_time" content="2017-04-10T07:07:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="web api 接口安全设计探讨">
 <meta name="twitter:description" content="web api安全性需要考虑的内容
@@ -379,7 +379,7 @@ HOW?做签名client 选取request的需要防篡改的参数拼接random key按�
 <li>防重放（DDOS)</li>
 <li>防读</li>
 </ul>
-<p><em>等</em></p>
+<p><strong>等</strong></p>
 <h2 id="HOW"><a href="#HOW" class="headerlink" title="HOW?"></a>HOW?</h2><p><strong>做签名</strong><br>client 选取request的需要防篡改的参数拼接random key按一定的算法生成salt（sign),服务端按照相同的方式（服务端保存了秘钥), 生成salt(sign),匹配下是否是一致</p>
 <h4 id="几个问题"><a href="#几个问题" class="headerlink" title="几个问题"></a>几个问题</h4><p>1 token 何时下发？ </p>
 <blockquote>
@@ -387,7 +387,7 @@ HOW?做签名client 选取request的需要防篡改的参数拼接random key按�
 </blockquote>
 <p>2 token 下发如何保护？</p>
 <blockquote>
-<p>要保证一般的客户端-服务器通信安全，可以使用3个密钥。<br><em>初始密钥</em>是第一个，内置到app，保证最初的通信安全，用来加密-“主加密密钥”。此过程中的传输，是最容易被攻击的环节，可以采用其他辅助方式进行加密, 如HTTPS等。<br>其次是<em>主加密密钥</em>， 系统初始化之后从服务端获取生成。保存在客户端。重复利用。用来加密通信密钥。也可以由用户主动更新。<br>还有第三个是<em>通信密钥</em>，每次登陆更新，或者定期更换，用来加密通信数据。 此密钥的传输过程使用主加密密钥来加密。<br>通信密钥就是用来加密通信数据的。 </p>
+<p>要保证一般的客户端-服务器通信安全，可以使用3个密钥。<br><strong>初始密钥</strong>是第一个，内置到app，保证最初的通信安全，用来加密-“主加密密钥”。此过程中的传输，是最容易被攻击的环节，可以采用其他辅助方式进行加密, 如HTTPS等。<br>其次是<strong>主加密密钥</strong>， 系统初始化之后从服务端获取生成。保存在客户端。重复利用。用来加密通信密钥。也可以由用户主动更新。<br>还有第三个是<strong>通信密钥</strong>，每次登陆更新，或者定期更换，用来加密通信数据。 此密钥的传输过程使用主加密密钥来加密。<br>通信密钥就是用来加密通信数据的。 </p>
 </blockquote>
 <p>3 token 有效期？</p>
 <ul>
