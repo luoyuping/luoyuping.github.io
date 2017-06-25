@@ -279,6 +279,143 @@
             
               
                 
+                <a class="post-title-link" href="/2017/06/25/transfer-maven-to-gradlew/" itemprop="url">
+                  transfer maven to gradlew
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-25T22:03:38+08:00" content="2017-06-25">
+              2017-06-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/06/25/transfer-maven-to-gradlew/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/25/transfer-maven-to-gradlew/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="sum"><a href="#sum" class="headerlink" title="sum"></a>sum</h3><p>公司目前的工程都是用maven 构建，自己平时也习惯使用maven 来构建项目，本文从个maven的熟悉者的角度，教你如何快熟入门gradle<br>,所以本文面向的是那些熟悉maven ，想快速入门gradle 的工程师</p>
+<h3 id="maven-VS-gradle"><a href="#maven-VS-gradle" class="headerlink" title="maven VS gradle"></a>maven VS gradle</h3><h5 id="gradle改进点"><a href="#gradle改进点" class="headerlink" title="gradle改进点"></a>gradle改进点</h5><p><em>maven 有哪些问题?</em></p>
+<ul>
+<li>xml 语法太烦，不够简洁</li>
+<li>不够灵活(没有感觉到)</li>
+<li>maven 依赖管理有槽点，依赖的多版本管理做得不好?(这个我没有太多想法)<br>当然，maven 提出的生命周期还是很容易上手,工程师只要会使用这些生命周期就好，解放工程师<br><em>gradle</em> 针对这些问题，进行优化</li>
+<li>DSL语法，简洁</li>
+<li>一开始使用Apache Ivy 来作为它的依赖管理，后面是自研</li>
+</ul>
+<h5 id="gradle-maven-特性映射"><a href="#gradle-maven-特性映射" class="headerlink" title="gradle maven 特性映射"></a>gradle maven 特性映射</h5><h6 id="构建配置文件"><a href="#构建配置文件" class="headerlink" title="构建配置文件"></a>构建配置文件</h6><p>|:—–:|:——–:|<br>|gradle|maven|<br>|build.grade &amp;&amp; settingg.gradle |pom.xml|</p>
+<p>来看两个构建config file :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;</div><div class="line">         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0</div><div class="line">    http://maven.apache.org/maven-v4_0_0.xsd&quot;&gt;</div><div class="line"></div><div class="line">    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</div><div class="line">    &lt;groupId&gt;com.technologyconversations&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;java-build-tools&lt;/artifactId&gt;</div><div class="line">    &lt;packaging&gt;jar&lt;/packaging&gt;</div><div class="line">    &lt;version&gt;1.0&lt;/version&gt;</div><div class="line"></div><div class="line">    &lt;dependencies&gt;</div><div class="line">        &lt;dependency&gt;</div><div class="line">            &lt;groupId&gt;junit&lt;/groupId&gt;</div><div class="line">            &lt;artifactId&gt;junit&lt;/artifactId&gt;</div><div class="line">            &lt;version&gt;4.11&lt;/version&gt;</div><div class="line">        &lt;/dependency&gt;</div><div class="line">        &lt;dependency&gt;</div><div class="line">            &lt;groupId&gt;org.hamcrest&lt;/groupId&gt;</div><div class="line">            &lt;artifactId&gt;hamcrest-all&lt;/artifactId&gt;</div><div class="line">            &lt;version&gt;1.3&lt;/version&gt;</div><div class="line">        &lt;/dependency&gt;</div><div class="line">    &lt;/dependencies&gt;</div><div class="line"></div><div class="line">    &lt;build&gt;</div><div class="line">        &lt;plugins&gt;</div><div class="line">            &lt;plugin&gt;</div><div class="line">                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</div><div class="line">                &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;</div><div class="line">                &lt;version&gt;2.3.2&lt;/version&gt;</div><div class="line">            &lt;/plugin&gt;</div><div class="line">        &lt;/plugins&gt;</div><div class="line">    &lt;/build&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;/project&gt;</div></pre></td></tr></table></figure>
+<p><strong>transfer to gradle</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">apply plugin: &apos;maven-compile-plugin&apos;</div><div class="line"></div><div class="line">version = &apos;1.0&apos;</div><div class="line"></div><div class="line">repositories &#123;</div><div class="line">    mavenCentral()</div><div class="line">&#125;</div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">    testCompile group: &apos;junit&apos;, name: &apos;junit&apos;, version: &apos;4.11&apos; testCompile group: &apos;org.hamcrest&apos;, name: &apos;hamcrest-all&apos;, version: &apos;1.3&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="command"><a href="#command" class="headerlink" title="command"></a>command</h5><p>####### 生命周期命令</p>
+<ul>
+<li>maven 的生命周期用的命令有:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mvn clean</div><div class="line">mvn compile</div><div class="line">mvn test</div><div class="line">mvn package</div><div class="line">mvn install</div><div class="line">mvn deploy</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>常用参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-Dmaven.test.skip=true # skip test</div></pre></td></tr></table></figure></p>
+<ul>
+<li>gradle 的”生命周期” 是通过task来设定的，gradel 设定了一些常用的task<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">gradle clean </div><div class="line">gradle build </div><div class="line">gradle jar</div><div class="line">gradle install</div><div class="line">gradle tasks</div><div class="line">gradle uploadArchives</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>工程所有的action 都可以通过 <code>gradle tasks</code>来查看</p>
+<p>####### 辅助性的命令<br>由于gradle 灵活的task 模式，使得构建者有很大灵活性来自定义操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gradle task &lt;self-define-taskname&gt;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>dependency 排查<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mvn dependency:tree</div><div class="line">gralde [:sub-modle-name:] dependencies</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="gradle-特有的一些概念"><a href="#gradle-特有的一些概念" class="headerlink" title="gradle  特有的一些概念"></a>gradle  特有的一些概念</h5><ul>
+<li><code>./gradlew</code> ，脚本，初次执行脚本时，会下载gradle 的可执行文件到本地,本地安装了gradle ，就可以不使用./gradlew 脚本来执行gradle 命令</li>
+</ul>
+<h5 id="gradle-进阶"><a href="#gradle-进阶" class="headerlink" title="gradle 进阶"></a>gradle 进阶</h5><p>这个先不展开来说， 大概提几个点</p>
+<ul>
+<li><a href="https://docs.gradle.org/3.3/userguide/writing_build_scripts.html" target="_blank" rel="external">Writing Build Scripts</a> </li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/05/18/一个健全系统设计的必备元素/" itemprop="url">
                   一个高可维护性系统设计的必备元素
                 </a>
@@ -943,140 +1080,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/07/io复用/" itemprop="url">
-                  I/O  复用  --  熟悉 API篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-07T01:22:01+08:00" content="2015-10-07">
-              2015-10-07
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/unix-learning/" itemprop="url" rel="index">
-                    <span itemprop="name">unix learning</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="横向比较"><a href="#横向比较" class="headerlink" title="横向比较"></a>横向比较</h2><table>
-<thead>
-<tr>
-<th style="text-align:left"></th>
-<th>函数原型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">select</td>
-<td><strong> int select(int nfds,fd_set* readfds,fd_set* writefds,fd_set* exceptfds,struct timeval* timeout )</strong></td>
-</tr>
-<tr>
-<td style="text-align:left">poll</td>
-<td><strong> int poll(struct pollfd* fds,nfds_t nfds,int timeout) </strong></td>
-</tr>
-<tr>
-<td style="text-align:left">epoll</td>
-<td><strong> int epoll(int epollfd,struct epoll_event* events,int maxevent,int timeout) </strong></td>
-</tr>
-</tbody>
-</table>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/07/io复用/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1122,7 +1125,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1139,7 +1142,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
