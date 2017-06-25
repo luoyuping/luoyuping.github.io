@@ -279,6 +279,165 @@
             
               
                 
+                <a class="post-title-link" href="/2014/11/08/协议的编码格式/" itemprop="url">
+                  协议的编码格式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-11-08T13:53:04+08:00" content="2014-11-08">
+              2014-11-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/tcp/" itemprop="url" rel="index">
+                    <span itemprop="name">tcp</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/11/08/协议的编码格式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/11/08/协议的编码格式/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>开发网络应用，时常要自己去设计通讯的协议，原来自己被多种多样的协议的格式迷惑，理不清各种各样的协议的联系，查查资料，思考之后，还是理清了，如果，你也有类似的疑惑，你不妨看看</p>
+<hr>
+<p>协议的区分的本质（或者说协议的区分的入口点）是在协议的编码的格式</p>
+<ul>
+<li><strong> 文本流编码</strong></li>
+<li><strong>二进制流编码</strong></li>
+<li><strong>混合编码 </strong></li>
+</ul>
+<p>仔细想想，这和文件类型区分的入口点，是一致的</p>
+<hr>
+<h4 id="文本流编码"><a href="#文本流编码" class="headerlink" title="文本流编码"></a>文本流编码</h4><p>常见的基于文本流编码的网络协议的编码有：<strong> XML</strong> <strong> JSON</strong><br>这两种具体的语法的规范，不在累述，使用的场景还是非常多的，不只是在网络协议的，在应用的开发中，将文本文件，存储成这两种格式，还是极为普遍</p>
+<p><strong>文本流编码的一个不可忽视的的问题是：特殊字符的转义 </strong> </p>
+<hr>
+<h4 id="二进制编码"><a href="#二进制编码" class="headerlink" title="二进制编码"></a>二进制编码</h4><p>其实这是网络协议的发展史上，先出现的编码的格式（考虑远古时代的 内存，网络带宽）</p>
+<p><strong>基于这种编码的格式，最常见的是 TLV编码（包括基于它的变体）</strong><br>TLV:你可以理解成<br>TYPE + LENGTH + VALUE<br>TAG   + LENGTH + VALUE<br>ID      + LENGTH + VALUE </p>
+<p>当ID唯一，length 字段就可以省略</p>
+<p>成熟通用的二进制格式: </p>
+<ul>
+<li>Protobuf</li>
+<li>thrift　</li>
+</ul>
+<p>基于这种编码的网络协议的特点</p>
+<ol>
+<li>解析效率高：主要是因为不需要转义字符</li>
+<li>编码长度低：主要是因为元数据占用的空间很少</li>
+<li>不易于实现：但是有很多开源的工具，根据IDL自动生成代码，提高开发效率</li>
+<li>兼容性高：协议双方可以独立升级</li>
+<li>可读性差：二进制协议，肉眼很难识别</li>
+</ol>
+<hr>
+<h4 id="混合型编码"><a href="#混合型编码" class="headerlink" title="混合型编码"></a>混合型编码</h4><p><a href="https://avro.apache.org/" target="_blank" rel="external">Avro</a> </p>
+<p><del>没用过，不懂，先占坑，后续</del></p>
+<hr>
+<p>参考链接：</p>
+<ul>
+<li><a href="http://yangbajing.blog.chinaunix.net/uid-27105712-id-3266286.html" target="_blank" rel="external">通信协议之序列化</a> </li>
+<li><a href="http://blog.arganzheng.me/posts/rpc-encoding-protocol-study.html" target="_blank" rel="external">网络RPC编码协议学习</a> </li>
+<li><a href="http://www.0xffffff.org/?p=1026" target="_blank" rel="external">看协议设计的部分</a> </li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2014/07/15/the-evoltion-of-c/" itemprop="url">
                   the evoltion of c++
                 </a>
@@ -867,7 +1026,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
