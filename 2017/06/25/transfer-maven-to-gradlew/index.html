@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://beready.me/2017/06/25/transfer-maven-to-gradlew/index.html">
 <meta property="og:site_name" content="LYP's Blog">
 <meta property="og:description" content="sum公司目前的工程都是用maven 构建，自己平时也习惯使用maven 来构建项目，本文从个maven的熟悉者的角度，教你如何快熟入门gradle,所以本文面向的是那些熟悉maven ，想快速入门gradle 的工程师">
-<meta property="og:updated_time" content="2017-06-25T14:08:02.000Z">
+<meta property="og:updated_time" content="2017-06-25T14:12:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="transfer maven to gradlew">
 <meta name="twitter:description" content="sum公司目前的工程都是用maven 构建，自己平时也习惯使用maven 来构建项目，本文从个maven的熟悉者的角度，教你如何快熟入门gradle,所以本文面向的是那些熟悉maven ，想快速入门gradle 的工程师">
@@ -326,7 +326,7 @@
       
         <h3 id="sum"><a href="#sum" class="headerlink" title="sum"></a>sum</h3><p>公司目前的工程都是用maven 构建，自己平时也习惯使用maven 来构建项目，本文从个maven的熟悉者的角度，教你如何快熟入门gradle<br>,所以本文面向的是那些熟悉maven ，想快速入门gradle 的工程师</p>
 <a id="more"></a>
-<h3 id="maven-VS-gradle"><a href="#maven-VS-gradle" class="headerlink" title="maven VS gradle"></a>maven VS gradle</h3><h5 id="gradle改进点"><a href="#gradle改进点" class="headerlink" title="gradle改进点"></a>gradle改进点</h5><p><em>maven 有哪些问题?</em></p>
+<h3 id="maven-VS-gradle"><a href="#maven-VS-gradle" class="headerlink" title="maven VS gradle"></a>maven VS gradle</h3><h4 id="gradle改进点"><a href="#gradle改进点" class="headerlink" title="gradle改进点"></a>gradle改进点</h4><p><em>maven 有哪些问题?</em></p>
 <ul>
 <li>xml 语法太烦，不够简洁</li>
 <li>不够灵活(没有感觉到)</li>
@@ -334,7 +334,7 @@
 <li>DSL语法，简洁</li>
 <li>一开始使用Apache Ivy 来作为它的依赖管理，后面是自研</li>
 </ul>
-<h5 id="gradle-maven-特性映射"><a href="#gradle-maven-特性映射" class="headerlink" title="gradle maven 特性映射"></a>gradle maven 特性映射</h5><h6 id="构建配置文件"><a href="#构建配置文件" class="headerlink" title="构建配置文件"></a>构建配置文件</h6><table>
+<h4 id="gradle-maven-特性映射"><a href="#gradle-maven-特性映射" class="headerlink" title="gradle maven 特性映射"></a>gradle maven 特性映射</h4><h5 id="构建配置文件"><a href="#构建配置文件" class="headerlink" title="构建配置文件"></a>构建配置文件</h5><table>
 <thead>
 <tr>
 <th style="text-align:center">gradle</th>
@@ -352,8 +352,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;</div><div class="line">         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0</div><div class="line">    http://maven.apache.org/maven-v4_0_0.xsd&quot;&gt;</div><div class="line"></div><div class="line">    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</div><div class="line">    &lt;groupId&gt;com.technologyconversations&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;java-build-tools&lt;/artifactId&gt;</div><div class="line">    &lt;packaging&gt;jar&lt;/packaging&gt;</div><div class="line">    &lt;version&gt;1.0&lt;/version&gt;</div><div class="line"></div><div class="line">    &lt;dependencies&gt;</div><div class="line">        &lt;dependency&gt;</div><div class="line">            &lt;groupId&gt;junit&lt;/groupId&gt;</div><div class="line">            &lt;artifactId&gt;junit&lt;/artifactId&gt;</div><div class="line">            &lt;version&gt;4.11&lt;/version&gt;</div><div class="line">        &lt;/dependency&gt;</div><div class="line">        &lt;dependency&gt;</div><div class="line">            &lt;groupId&gt;org.hamcrest&lt;/groupId&gt;</div><div class="line">            &lt;artifactId&gt;hamcrest-all&lt;/artifactId&gt;</div><div class="line">            &lt;version&gt;1.3&lt;/version&gt;</div><div class="line">        &lt;/dependency&gt;</div><div class="line">    &lt;/dependencies&gt;</div><div class="line"></div><div class="line">    &lt;build&gt;</div><div class="line">        &lt;plugins&gt;</div><div class="line">            &lt;plugin&gt;</div><div class="line">                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</div><div class="line">                &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;</div><div class="line">                &lt;version&gt;2.3.2&lt;/version&gt;</div><div class="line">            &lt;/plugin&gt;</div><div class="line">        &lt;/plugins&gt;</div><div class="line">    &lt;/build&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;/project&gt;</div></pre></td></tr></table></figure>
 <p><strong>transfer to gradle</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">apply plugin: &apos;maven-compile-plugin&apos;</div><div class="line"></div><div class="line">version = &apos;1.0&apos;</div><div class="line"></div><div class="line">repositories &#123;</div><div class="line">    mavenCentral()</div><div class="line">&#125;</div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">    testCompile group: &apos;junit&apos;, name: &apos;junit&apos;, version: &apos;4.11&apos; testCompile group: &apos;org.hamcrest&apos;, name: &apos;hamcrest-all&apos;, version: &apos;1.3&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h5 id="command"><a href="#command" class="headerlink" title="command"></a>command</h5><p>####### 生命周期命令</p>
-<ul>
+<h4 id="command"><a href="#command" class="headerlink" title="command"></a>command</h4><h5 id="生命周期命令"><a href="#生命周期命令" class="headerlink" title="生命周期命令"></a>生命周期命令</h5><ul>
 <li>maven 的生命周期用的命令有:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mvn clean</div><div class="line">mvn compile</div><div class="line">mvn test</div><div class="line">mvn package</div><div class="line">mvn install</div><div class="line">mvn deploy</div></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -363,15 +362,15 @@
 </li>
 </ul>
 <p>工程所有的action 都可以通过 <code>gradle tasks</code>来查看</p>
-<p>####### 辅助性的命令<br>由于gradle 灵活的task 模式，使得构建者有很大灵活性来自定义操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gradle task &lt;self-define-taskname&gt;</div></pre></td></tr></table></figure></p>
+<h5 id="辅助性的命令"><a href="#辅助性的命令" class="headerlink" title="辅助性的命令"></a>辅助性的命令</h5><p>由于gradle 灵活的task 模式，使得构建者有很大灵活性来自定义操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gradle task &lt;self-define-taskname&gt;</div></pre></td></tr></table></figure></p>
 <ul>
 <li>dependency 排查<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mvn dependency:tree</div><div class="line">gralde [:sub-modle-name:] dependencies</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h5 id="gradle-特有的一些概念"><a href="#gradle-特有的一些概念" class="headerlink" title="gradle  特有的一些概念"></a>gradle  特有的一些概念</h5><ul>
+<h4 id="gradle-特有的一些概念"><a href="#gradle-特有的一些概念" class="headerlink" title="gradle  特有的一些概念"></a>gradle  特有的一些概念</h4><ul>
 <li><code>./gradlew</code> ，脚本，初次执行脚本时，会下载gradle 的可执行文件到本地,本地安装了gradle ，就可以不使用./gradlew 脚本来执行gradle 命令</li>
 </ul>
-<h5 id="gradle-进阶"><a href="#gradle-进阶" class="headerlink" title="gradle 进阶"></a>gradle 进阶</h5><p>这个先不展开来说， 大概提几个点</p>
+<h4 id="gradle-进阶"><a href="#gradle-进阶" class="headerlink" title="gradle 进阶"></a>gradle 进阶</h4><p>这个先不展开来说， 大概提几个点</p>
 <ul>
 <li><a href="https://docs.gradle.org/3.3/userguide/writing_build_scripts.html" target="_blank" rel="external">Writing Build Scripts</a> </li>
 </ul>
@@ -543,7 +542,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#sum"><span class="nav-number">1.</span> <span class="nav-text">sum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#maven-VS-gradle"><span class="nav-number">2.</span> <span class="nav-text">maven VS gradle</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#gradle改进点"><span class="nav-number">2.0.1.</span> <span class="nav-text">gradle改进点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#gradle-maven-特性映射"><span class="nav-number">2.0.2.</span> <span class="nav-text">gradle maven 特性映射</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#构建配置文件"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">构建配置文件</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#command"><span class="nav-number">2.0.3.</span> <span class="nav-text">command</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#gradle-特有的一些概念"><span class="nav-number">2.0.4.</span> <span class="nav-text">gradle  特有的一些概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#gradle-进阶"><span class="nav-number">2.0.5.</span> <span class="nav-text">gradle 进阶</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#sum"><span class="nav-number">1.</span> <span class="nav-text">sum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#maven-VS-gradle"><span class="nav-number">2.</span> <span class="nav-text">maven VS gradle</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gradle改进点"><span class="nav-number">2.1.</span> <span class="nav-text">gradle改进点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gradle-maven-特性映射"><span class="nav-number">2.2.</span> <span class="nav-text">gradle maven 特性映射</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#构建配置文件"><span class="nav-number">2.2.1.</span> <span class="nav-text">构建配置文件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#command"><span class="nav-number">2.3.</span> <span class="nav-text">command</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#生命周期命令"><span class="nav-number">2.3.1.</span> <span class="nav-text">生命周期命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#辅助性的命令"><span class="nav-number">2.3.2.</span> <span class="nav-text">辅助性的命令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gradle-特有的一些概念"><span class="nav-number">2.4.</span> <span class="nav-text">gradle  特有的一些概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gradle-进阶"><span class="nav-number">2.5.</span> <span class="nav-text">gradle 进阶</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
