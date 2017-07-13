@@ -279,6 +279,134 @@
             
               
                 
+                <a class="post-title-link" href="/2017/07/12/macos-使用最新的GNU-命令行工具/" itemprop="url">
+                  macos 使用最新的GNU 命令行工具
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-12T21:12:19+08:00" content="2017-07-12">
+              2017-07-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/mac-os/" itemprop="url" rel="index">
+                    <span itemprop="name">mac os</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/07/12/macos-使用最新的GNU-命令行工具/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/12/macos-使用最新的GNU-命令行工具/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>喜欢使用命令行工具的人，使用惯了linux 发行版的人，在mac 上使用命令行的话，有些命令行要么版本老，不支持一些常用的参数，要么参数不一致，也是头痛。<br>举几个例子：</p>
+<ul>
+<li>xargs<br>  <code>macos</code> 不支持参数 <code>-a</code></li>
+<li>ps<br><code>macos</code> 和linux 的参数基本不一样</li>
+<li>netstat<br><code>macos</code> 和linux 的参数基本不一样</li>
+</ul>
+<p>恭喜你，本篇blog 教你搞定这些问题</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/07/12/macos-使用最新的GNU-命令行工具/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/06/25/transfer-maven-to-gradlew/" itemprop="url">
                   transfer maven to gradlew
                 </a>
@@ -861,184 +989,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/09/流和文件/" itemprop="url">
-                  流和文件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-09T17:53:01+08:00" content="2016-12-09">
-              2016-12-09
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/09/流和文件/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/09/流和文件/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="流结构基础梳理"><a href="#流结构基础梳理" class="headerlink" title="流结构基础梳理"></a>流结构基础梳理</h1><p>java 的io体系概念较多，相应的读写的类较为复杂，有必要根据种类进行分类梳理，以便记忆</p>
-<h2 id="字节流-字符流"><a href="#字节流-字符流" class="headerlink" title="字节流 字符流"></a>字节流 字符流</h2><h3 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h3><ul>
-<li>super class: InputStream &amp;&amp; OutputStream</li>
-<li>读写的基本长度是8bit</li>
-<li>可以处理任意类型的文件</li>
-</ul>
-<h3 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h3><ul>
-<li>super class : Reader &amp;&amp; Writer</li>
-<li>读写的基本长度是一个字符 16bit</li>
-<li>一般用来处理带有编码格式的文本</li>
-</ul>
-<h2 id="节点流-处理流"><a href="#节点流-处理流" class="headerlink" title="节点流,处理流"></a>节点流,处理流</h2><h3 id="节点流"><a href="#节点流" class="headerlink" title="节点流"></a>节点流</h3><ul>
-<li>节点流职级操作文件，或者网络数据 ,FileInputStream,FileOutputStream</li>
-</ul>
-<h3 id="处理流"><a href="#处理流" class="headerlink" title="处理流"></a>处理流</h3><ul>
-<li>对节点流进行进一步包装，例如提供缓冲功能，数据过滤功能,对数据的读写的报装<br>常见处理流又包含 缓冲流，转换流，数据流，对象流</li>
-</ul>
-<h4 id="缓冲流"><a href="#缓冲流" class="headerlink" title="缓冲流"></a>缓冲流</h4><ul>
-<li>BufferedInputStream / BufferedOutputStream </li>
-<li>数据会缓冲到内存里面，流关闭之前，需要进行flush的操作，将数据写入磁盘,避免数据的丢失</li>
-</ul>
-<h4 id="转换流"><a href="#转换流" class="headerlink" title="转换流"></a>转换流</h4><ul>
-<li>只有InputStreamReader / OutputStreamWriter </li>
-<li>字节到字符的转换<h4 id="数据流"><a href="#数据流" class="headerlink" title="数据流"></a>数据流</h4></li>
-<li>提供java 基本类型数据的读写</li>
-<li>DataInputStream / DataOutputStream </li>
-</ul>
-<h4 id="Print-流"><a href="#Print-流" class="headerlink" title="Print 流"></a>Print 流</h4><h4 id="Object-流"><a href="#Object-流" class="headerlink" title="Object 流"></a>Object 流</h4><ul>
-<li>对象的序列化</li>
-<li>readObject()  / writeObject()</li>
-<li>jvm原生的序列化对象按自定义固定的格式（基于二进制)</li>
-<li>对于不可序列化的域，可以使用transient 标示</li>
-</ul>
-<h1 id="使用总结"><a href="#使用总结" class="headerlink" title="使用总结"></a>使用总结</h1><h4 id="读写文本数据"><a href="#读写文本数据" class="headerlink" title="读写文本数据"></a>读写文本数据</h4><ul>
-<li>文本输出PrintWriter,文本读入Scanner 或者BufferedReader </li>
-<li>nio 的File类可以方便的读写中等长度的文本文件</li>
-</ul>
-<h4 id="读写二进制数据"><a href="#读写二进制数据" class="headerlink" title="读写二进制数据"></a>读写二进制数据</h4><ul>
-<li>DataInputStream 读入二进制数据并转化为java数据类型 , DataOutputStream 将java的数据以二进制写入,这两个流分别实现接口DataInput 和DataOutput 接口</li>
-</ul>
-<h4 id="java对象的读写"><a href="#java对象的读写" class="headerlink" title="java对象的读写"></a>java对象的读写</h4><ul>
-<li>ObjectInputStream ObjectOutputStream</li>
-</ul>
-<h4 id="java-对象的序列化"><a href="#java-对象的序列化" class="headerlink" title="java 对象的序列化"></a>java 对象的序列化</h4><ul>
-<li>不可序列化的field,使用trandient 修饰符,注意常见的不可序列化的域或者没有序列化意义的域</li>
-<li><a href="https://github.com/giantray/stackoverflow-java-top-qa/blob/master/contents/what-is-a-serialversionuid-and-why-should-i-use-it.md" target="_blank" rel="external">关于java序列化时的serialVersionUid的原因以及生成的办法</a></li>
-</ul>
-<h4 id="java-文件目录操作"><a href="#java-文件目录操作" class="headerlink" title="java 文件目录操作"></a>java 文件目录操作</h4><ul>
-<li>File 、Path 对系统文件目录进行操作</li>
-<li>操作的文件系统默认是用户所在的磁盘,Paths 也可以操作其他的文件系统，例如一个zip压缩包</li>
-</ul>
-<h4 id="java-里面的内存映射"><a href="#java-里面的内存映射" class="headerlink" title="java 里面的内存映射"></a>java 里面的内存映射</h4><ul>
-<li>关于四种文件读入的方式的性能比较<ul>
-<li>四种方式分别为：普通输入流，带缓冲的输入流，随机访问文件，内存映射文件</li>
-<li>性能测试代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div></pre></td><td class="code"><pre><div class="line">public class ReadSpeedTest &#123;</div><div class="line"></div><div class="line">    public interface Command &#123;</div><div class="line">        public  long execute(Object data);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public static class TestInputStream implements Command &#123;</div><div class="line">        public long execute(Object data) &#123;</div><div class="line">            try&#123;</div><div class="line">                InputStream in = Files.newInputStream((Path)data);</div><div class="line">                CRC32 crc32 = new CRC32();</div><div class="line"></div><div class="line">                int c;</div><div class="line">                while ((c = in.read()) != -1) &#123;</div><div class="line">                    crc32.update(c);</div><div class="line">                &#125;</div><div class="line">                return crc32.getValue();</div><div class="line">            &#125; catch (Exception e) &#123;</div><div class="line">                return -1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static class TestBufferInputStream implements Command &#123;</div><div class="line">        public long execute(Object data) &#123;</div><div class="line">            try &#123;</div><div class="line">                BufferedInputStream bufferedInputStream = new BufferedInputStream(Files.newInputStream((Path)data));</div><div class="line">                CRC32 crc32 = new CRC32();</div><div class="line">                int c ;</div><div class="line">                while ((c = bufferedInputStream.read()) != -1) &#123;</div><div class="line">                    crc32.update(c);</div><div class="line">                &#125;</div><div class="line">                return crc32.getValue();</div><div class="line"></div><div class="line">            &#125; catch (Exception e) &#123;</div><div class="line">                return -1;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static class TestRandomAccessFile implements Command &#123;</div><div class="line">        public long execute(Object file) &#123;</div><div class="line">            try &#123;</div><div class="line">                RandomAccessFile randomAccessFile = new RandomAccessFile(((Path)file).toFile(),&quot;r&quot;);</div><div class="line">                long fileLength = randomAccessFile.length();</div><div class="line">                CRC32 crc32 = new CRC32();</div><div class="line">                for (int i = 0; i &lt; fileLength; i++) &#123;</div><div class="line">                    randomAccessFile.seek(i);</div><div class="line">                    int c = randomAccessFile.read();</div><div class="line">                    crc32.update(c);</div><div class="line">                &#125;</div><div class="line">                return crc32.getValue();</div><div class="line">            &#125; catch (Exception e) &#123;</div><div class="line">                return -1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public static class TestMappedFile implements Command &#123;</div><div class="line">        public long execute(Object file) &#123;</div><div class="line">            try &#123;</div><div class="line">                FileChannel fileChannel = FileChannel.open((Path)file);</div><div class="line">                CRC32 crc32 = new CRC32();</div><div class="line">                long length = fileChannel.size();</div><div class="line">                MappedByteBuffer memBuffer = fileChannel.map(FileChannel.MapMode.READ_ONLY,0,length);</div><div class="line">                for (int i = 0; i &lt; length; i++) &#123;</div><div class="line">                    int c = memBuffer.get(i);</div><div class="line">                    crc32.update(c);</div><div class="line">                &#125;</div><div class="line">                return crc32.getValue();</div><div class="line">            &#125; catch (Exception e) &#123;</div><div class="line">                return -1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public static long time(String fileName,Command c) &#123;</div><div class="line">        long startTime = System.currentTimeMillis();</div><div class="line">        long crcValues = c.execute(Paths.get(fileName));</div><div class="line">        long endTime = System.currentTimeMillis();</div><div class="line">        System.out.println(endTime - startTime);</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        time(args[0],new TestInputStream());</div><div class="line">        time(args[0],new TestBufferInputStream());</div><div class="line">        time(args[0],new TestRandomAccessFile());</div><div class="line">        time(args[0],new TestMappedFile());</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<p>ps: 上面的代码一个一个字节读数据，能代表的数据很有限，可以尝试读取一个大文件，感受性能差异</p>
-<h4 id="文件锁"><a href="#文件锁" class="headerlink" title="文件锁"></a>文件锁</h4><ul>
-<li><p>获得文件锁使用FileChannel类 ,lock() or trylock()</p>
-<ul>
-<li><p>api </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">FileLock lock (long start , long size,boolean shared)</div><div class="line">FileLock tryLock (long start , long size,boolean shared)</div></pre></td></tr></table></figure>
-</li>
-<li><p>java中的锁 </p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><ul>
-<li>Pattern &amp;&amp; Matcher</li>
-<li>Pattern.compile(regexString) ,then User Matcher to get the taget </li>
-</ul>
-<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ul>
-<li><a href="http://www.cnblogs.com/shitouer/archive/2012/12/19/2823641.html" target="_blank" rel="external">深入理解 Java中的 流 (Stream)</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1084,7 +1034,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1092,7 +1042,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1101,7 +1051,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
