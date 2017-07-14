@@ -279,6 +279,145 @@
             
               
                 
+                <a class="post-title-link" href="/2017/07/14/xargs-tutoral/" itemprop="url">
+                  xargs tutorial
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-14T21:00:19+08:00" content="2017-07-14">
+              2017-07-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/tools/" itemprop="url" rel="index">
+                    <span itemprop="name">tools</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/07/14/xargs-tutoral/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/14/xargs-tutoral/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="man"><a href="#man" class="headerlink" title="man"></a>man</h1><blockquote>
+<p>buid and execute command lines from standard input<br>reads data from standard input (stdin) and executes the command (supplied to it as argument) one or more times based on the input read</p>
+</blockquote>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p><code>arg</code> 是参数，<code>xargs</code> X参数? 这样会好理解一些</p>
+<h3 id="什么情况需要选用这个命令"><a href="#什么情况需要选用这个命令" class="headerlink" title="什么情况需要选用这个命令?"></a>什么情况需要选用这个命令?</h3><p>看几条对比的命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">find . -name &quot;*.md&quot; |xargs grep thought     # 这个命令是将找的文件的内容里面过滤字样 thought</div><div class="line">find . -name &quot;*.md&quot; |grep weekly-0519.md    # 这个命令是将找到的文件，过滤出文件名中带有字样 thought</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xargs -a input.txt ls -ltr #input.txt 里面有本目录下的几个文件名</div></pre></td></tr></table></figure>
+<h1 id="常见用法"><a href="#常见用法" class="headerlink" title="常见用法"></a>常见用法</h1><h2 id="case-1-通过xargs-使命令执行根据参数列表执行多次"><a href="#case-1-通过xargs-使命令执行根据参数列表执行多次" class="headerlink" title="case 1 [通过xargs 使命令执行根据参数列表执行多次]"></a>case 1 [通过xargs 使命令执行根据参数列表执行多次]</h2><h3 id="L-number"><a href="#L-number" class="headerlink" title="-L  [number]"></a>-L  [number]</h3><ul>
+<li>等同于用法 <code>-l[line-number]</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xargs -a  keyword.txt -L 1 find . -name</div><div class="line">xargs -a  keyword.txt -l1 find . -name</div></pre></td></tr></table></figure>
+<p>参数是按行展开的,每行一个参数,表示每次传递number行的参数给command</p>
+<h3 id="n-number"><a href="#n-number" class="headerlink" title="-n [number]"></a>-n [number]</h3><p>当参数是按空格间隔开的时候，想命令按空格为间隔，读取参数列表,每次读取number 个参数给后面的command</p>
+<p>例如：从stdin 里面，每次读取一个参数给find 查找<br><img src="http://p0.meituan.net/aichequan/74b5adae8c0cc7a4d7685cbfe0b73c2b61275.png" alt=""></p>
+<h2 id="case-2"><a href="#case-2" class="headerlink" title="case 2"></a>case 2</h2><h3 id="a"><a href="#a" class="headerlink" title="-a"></a>-a</h3><p>xargs 会读取文件作为输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xargs -a input.txt ls -lart # 从文件里面读取参数</div></pre></td></tr></table></figure></p>
+<h2 id="case-3"><a href="#case-3" class="headerlink" title="case 3"></a>case 3</h2><h3 id="p"><a href="#p" class="headerlink" title="-p"></a>-p</h3><p>迫使每次执行command 之前询问你是否执行这个命令<br>例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xargs -a input.txt -l1  -p find . -name</div></pre></td></tr></table></figure></p>
+<p><img src="http://p1.meituan.net/aichequan/e2b433a4ad814e359b69216fb91530dd43675.png" alt="示例"></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://www.howtoforge.com/tutorial/linux-xargs-command/" target="_blank" rel="external">8 Practical Examples of Linux Xargs Command for Beginners</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/07/12/macos-使用最新的GNU-命令行工具/" itemprop="url">
                   macos 使用最新的GNU 命令行工具
                 </a>
@@ -844,156 +983,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/08/2017-s-plan/" itemprop="url">
-                  2017's plan
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-08T17:07:25+08:00" content="2017-02-08">
-              2017-02-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/私人/" itemprop="url" rel="index">
-                    <span itemprop="name">私人</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/02/08/2017-s-plan/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/08/2017-s-plan/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一年之计在于春，2017年计划</p>
-<ul>
-<li>每天看两个小时的书。一年读10本技术书，书单记录如下：<ul>
-<li>java multithread</li>
-</ul>
-</li>
-<li>每天健身时间&gt;=45min。体重控制在65kg。</li>
-<li>两个开源项目的代码<ul>
-<li>okhttp </li>
-<li>jetty &amp;&amp; spring &amp;&amp; spring mvc 部分源码</li>
-</ul>
-</li>
-<li>精通java,成长历程:<br>  -</li>
-<li>熟悉前端,成长历程:<br>  - </li>
-<li><p>厨艺能有些进步，回家能给父母做好饭</p>
-</li>
-<li><p>驾照</p>
-</li>
-<li><p><em>说话不能有脏话</em> 🤓</p>
-</li>
-</ul>
-<h3 id="共勉"><a href="#共勉" class="headerlink" title="共勉"></a>共勉</h3><blockquote>
-<p>不能停止对生活的思考</p>
-<p>专注做事情，不断坚持和改进,降低姿态</p>
-<p>show your affection to others, so you can get others’ affection</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1034,7 +1028,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
