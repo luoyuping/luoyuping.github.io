@@ -96,16 +96,16 @@ buid and execute command lines from standard inputreads data from standard input
 buid and execute command lines from standard inputreads data from standard input (stdin) and executes the command (supplied to it as argument) one or more times based on the input read
 
 作用arg 是参数，">
-<meta property="og:image" content="http://p0.meituan.net/aichequan/74b5adae8c0cc7a4d7685cbfe0b73c2b61275.png">
-<meta property="og:image" content="http://p1.meituan.net/aichequan/e2b433a4ad814e359b69216fb91530dd43675.png">
-<meta property="og:updated_time" content="2017-07-14T07:36:23.000Z">
+<meta property="og:image" content="https://p0.meituan.net/aichequan/74b5adae8c0cc7a4d7685cbfe0b73c2b61275.png">
+<meta property="og:image" content="https://p1.meituan.net/aichequan/e2b433a4ad814e359b69216fb91530dd43675.png">
+<meta property="og:updated_time" content="2017-09-11T06:46:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xargs tutorial">
 <meta name="twitter:description" content="man
 buid and execute command lines from standard inputreads data from standard input (stdin) and executes the command (supplied to it as argument) one or more times based on the input read
 
 作用arg 是参数，">
-<meta name="twitter:image" content="http://p0.meituan.net/aichequan/74b5adae8c0cc7a4d7685cbfe0b73c2b61275.png">
+<meta name="twitter:image" content="https://p0.meituan.net/aichequan/74b5adae8c0cc7a4d7685cbfe0b73c2b61275.png">
 
 
 
@@ -368,10 +368,10 @@ buid and execute command lines from standard inputreads data from standard input
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xargs -a  keyword.txt -L 1 find . -name</div><div class="line">xargs -a  keyword.txt -l1 find . -name</div></pre></td></tr></table></figure>
 <p>参数是按行展开的,每行一个参数,表示每次传递number行的参数给command</p>
 <h3 id="n-number"><a href="#n-number" class="headerlink" title="-n [number]"></a>-n [number]</h3><p>当参数是按空格间隔开的时候，想命令按空格为间隔，读取参数列表,每次读取number 个参数给后面的command</p>
-<p>例如：从stdin 里面，每次读取一个参数给find 查找<br><img src="http://p0.meituan.net/aichequan/74b5adae8c0cc7a4d7685cbfe0b73c2b61275.png" alt=""></p>
+<p>例如：从stdin 里面，每次读取一个参数给find 查找<br><img src="https://p0.meituan.net/aichequan/74b5adae8c0cc7a4d7685cbfe0b73c2b61275.png" alt=""></p>
 <h2 id="case-2"><a href="#case-2" class="headerlink" title="case 2"></a>case 2</h2><h3 id="a"><a href="#a" class="headerlink" title="-a"></a>-a</h3><p>xargs 会读取文件作为输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xargs -a input.txt ls -lart # 从文件里面读取参数</div></pre></td></tr></table></figure></p>
 <h2 id="case-3"><a href="#case-3" class="headerlink" title="case 3"></a>case 3</h2><h3 id="p"><a href="#p" class="headerlink" title="-p"></a>-p</h3><p>迫使每次执行command 之前询问你是否执行这个命令<br>例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xargs -a input.txt -l1  -p find . -name</div></pre></td></tr></table></figure></p>
-<p><img src="http://p1.meituan.net/aichequan/e2b433a4ad814e359b69216fb91530dd43675.png" alt="示例"></p>
+<p><img src="https://p1.meituan.net/aichequan/e2b433a4ad814e359b69216fb91530dd43675.png" alt="示例"></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
 <li><a href="https://www.howtoforge.com/tutorial/linux-xargs-command/" target="_blank" rel="external">8 Practical Examples of Linux Xargs Command for Beginners</a></li>
 </ul>

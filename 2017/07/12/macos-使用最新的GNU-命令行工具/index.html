@@ -102,8 +102,8 @@ psmacos 和linux 的参数基本不一样
 netstatmacos 和linux 的参数基本不一样
 
 恭喜你，本篇blog 教你搞定这些问题">
-<meta property="og:image" content="http://p0.meituan.net/aichequan/dccf7a0c3bce628359e8c1582fb5eb6c182818.png">
-<meta property="og:updated_time" content="2017-07-13T09:26:32.000Z">
+<meta property="og:image" content="https://p0.meituan.net/aichequan/dccf7a0c3bce628359e8c1582fb5eb6c182818.png">
+<meta property="og:updated_time" content="2017-09-11T06:46:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="macos 使用最新的GNU 命令行工具">
 <meta name="twitter:description" content="喜欢使用命令行工具的人，使用惯了linux 发行版的人，在mac 上使用命令行的话，有些命令行要么版本老，不支持一些常用的参数，要么参数不一致，也是头痛。举几个例子：
@@ -113,7 +113,7 @@ psmacos 和linux 的参数基本不一样
 netstatmacos 和linux 的参数基本不一样
 
 恭喜你，本篇blog 教你搞定这些问题">
-<meta name="twitter:image" content="http://p0.meituan.net/aichequan/dccf7a0c3bce628359e8c1582fb5eb6c182818.png">
+<meta name="twitter:image" content="https://p0.meituan.net/aichequan/dccf7a0c3bce628359e8c1582fb5eb6c182818.png">
 
 
 
@@ -373,7 +373,7 @@ netstatmacos 和linux 的参数基本不一样
 <a id="more"></a>
 <h1 id="how"><a href="#how" class="headerlink" title="how"></a>how</h1><h2 id="step-1"><a href="#step-1" class="headerlink" title="step 1"></a>step 1</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"># Install GNU core utilities (those that come with OS X are outdated)</div><div class="line">brew install coreutils</div><div class="line"></div><div class="line"># Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed</div><div class="line">brew install findutils</div><div class="line"># 后面两个选装,如果你使用bash 多的话，可以安装下bash</div><div class="line"># Install Bash 4</div><div class="line">brew install bash</div><div class="line"></div><div class="line"># Install gnu-tar, g-prefixed</div><div class="line">brew install gnu-tar</div><div class="line"></div><div class="line"># Install pcregrep. Learn it, live it, love it.</div><div class="line">brew install pcre</div></pre></td></tr></table></figure>
 <h2 id="step2"><a href="#step2" class="headerlink" title="step2"></a>step2</h2><p>配置环境变量<code>$PATH</code> 和<code>$MANPATH</code></p>
-<p><em>每执行完一步上面的步骤，安装完这些工具到本地后，注意brew的 提示，它会提示如何更新上面的两个变量</em><br><img src="http://p0.meituan.net/aichequan/dccf7a0c3bce628359e8c1582fb5eb6c182818.png" alt="例如"></p>
+<p><em>每执行完一步上面的步骤，安装完这些工具到本地后，注意brew的 提示，它会提示如何更新上面的两个变量</em><br><img src="https://p0.meituan.net/aichequan/dccf7a0c3bce628359e8c1582fb5eb6c182818.png" alt="例如"></p>
 <p>下面是我的配置好了的环境变量 (我没有更新bash ,我用zsh)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">export PATH=&quot;/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin&quot;</div><div class="line"></div><div class="line">export MANPATH=&quot;/usr/local/man:$MANPATH&quot;</div><div class="line"></div><div class="line"># install gun updated tools from brew</div><div class="line">export PATH=&quot;/usr/local/opt/coreutils/libexec/gnubin:$PATH&quot;</div><div class="line">export MANPATH=&quot;/usr/local/opt/coreutils/libexec/gnuman:$MANPATH&quot;</div><div class="line"></div><div class="line">export PATH=&quot;/usr/local/opt/findutils/libexec/gnubin:$PATH&quot;</div><div class="line">export MANPATH=&quot;/usr/local/opt/findutils/libexec/gnuman:$MANPATH&quot;</div></pre></td></tr></table></figure></p>
 <h2 id="step3"><a href="#step3" class="headerlink" title="step3"></a>step3</h2><p>尝试下<code>ps</code> 和<code>netstat</code> 之类的命令是不是和linux的一样，别忘了尝试下man手册是不是已经可以man到最新的linux command</p>
 
