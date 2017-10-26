@@ -460,7 +460,9 @@
             <h1 id="man"><a href="#man" class="headerlink" title="man"></a>man</h1><blockquote>
 <p>buid and execute command lines from standard input<br>reads data from standard input (stdin) and executes the command (supplied to it as argument) one or more times based on the input read</p>
 </blockquote>
-<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p><code>arg</code> 是参数，<code>xargs</code> X参数? 这样会好理解一些</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p><code>arg</code> 是参数，<code>xargs</code> X参数? 这样会好理解一些</p>
+<p>使用方式:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xargs [OPTION]... COMMAND [INITIAL-ARGS]...</div></pre></td></tr></table></figure></p>
+<p>运行COMMAND ,参数是 INITIAL-ARGS(如果有的话)以及可以是使用xargs 读取到的文件或者其他输出</p>
 <h3 id="什么情况需要选用这个命令"><a href="#什么情况需要选用这个命令" class="headerlink" title="什么情况需要选用这个命令?"></a>什么情况需要选用这个命令?</h3><p>看几条对比的命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">find . -name &quot;*.md&quot; |xargs grep thought     # 这个命令是将找的文件的内容里面过滤字样 thought</div><div class="line">find . -name &quot;*.md&quot; |grep weekly-0519.md    # 这个命令是将找到的文件，过滤出文件名中带有字样 thought</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xargs -a input.txt ls -ltr #input.txt 里面有本目录下的几个文件名</div></pre></td></tr></table></figure>
@@ -474,6 +476,7 @@
 <h2 id="case-2"><a href="#case-2" class="headerlink" title="case 2"></a>case 2</h2><h3 id="a"><a href="#a" class="headerlink" title="-a"></a>-a</h3><p>xargs 会读取文件作为输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xargs -a input.txt ls -lart # 从文件里面读取参数</div></pre></td></tr></table></figure></p>
 <h2 id="case-3"><a href="#case-3" class="headerlink" title="case 3"></a>case 3</h2><h3 id="p"><a href="#p" class="headerlink" title="-p"></a>-p</h3><p>迫使每次执行command 之前询问你是否执行这个命令<br>例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xargs -a input.txt -l1  -p find . -name</div></pre></td></tr></table></figure></p>
 <p><img src="https://p1.meituan.net/aichequan/e2b433a4ad814e359b69216fb91530dd43675.png" alt="示例"></p>
+<h3 id="i"><a href="#i" class="headerlink" title="-i"></a>-i</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls |grep weekly |xargs -i mv &#123;&#125; weekreport</div></pre></td></tr></table></figure>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
 <li><a href="https://www.howtoforge.com/tutorial/linux-xargs-command/" target="_blank" rel="external">8 Practical Examples of Linux Xargs Command for Beginners</a></li>
 </ul>
