@@ -87,7 +87,7 @@
 <meta name="description" content="keep thinking!">
 <meta property="og:type" content="website">
 <meta property="og:title" content="LYP's Blog">
-<meta property="og:url" content="http://beready.me/page/3/index.html">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
 <meta property="og:site_name" content="LYP's Blog">
 <meta property="og:description" content="keep thinking!">
 <meta name="twitter:card" content="summary">
@@ -113,7 +113,7 @@
 
 
 
-  <link rel="canonical" href="http://beready.me/page/3/"/>
+  <link rel="canonical" href="http://yoursite.com/page/3/"/>
 
 
   <title> LYP's Blog </title>
@@ -257,6 +257,276 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/07/io复用/" itemprop="url">
+                  I/O  复用  --  熟悉 API篇
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-10-07T01:22:01+08:00" content="2015-10-07">
+              2015-10-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/unix-learning/" itemprop="url" rel="index">
+                    <span itemprop="name">unix learning</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="横向比较"><a href="#横向比较" class="headerlink" title="横向比较"></a>横向比较</h2><table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th>函数原型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">select</td>
+<td><strong> int select(int nfds,fd_set* readfds,fd_set* writefds,fd_set* exceptfds,struct timeval* timeout )</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">poll</td>
+<td><strong> int poll(struct pollfd* fds,nfds_t nfds,int timeout) </strong></td>
+</tr>
+<tr>
+<td style="text-align:left">epoll</td>
+<td><strong> int epoll(int epollfd,struct epoll_event* events,int maxevent,int timeout) </strong></td>
+</tr>
+</tbody>
+</table>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/10/07/io复用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/09/02/网络协议设计的思考总结/" itemprop="url">
+                  网络协议设计的思考总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-02T13:56:53+08:00" content="2015-09-02">
+              2015-09-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/tcp/" itemprop="url" rel="index">
+                    <span itemprop="name">tcp</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/02/网络协议设计的思考总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/02/网络协议设计的思考总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="字符编码-ascii-Unicode-UTF-8-，UTF16-UTF32…"><a href="#字符编码-ascii-Unicode-UTF-8-，UTF16-UTF32…" class="headerlink" title="字符编码 ascii , Unicode ,UTF-8 ，UTF16,UTF32…"></a>字符编码 ascii , Unicode ,UTF-8 ，UTF16,UTF32…</h2><ul>
+<li><a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html" target="_blank" rel="external">阮一峰的文章</a> </li>
+</ul>
+<p>##编码和网络字节序<br>最近在做一个项目时，遇到一个问题：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">应用层的数据组织格式是json，字符集的编码是UTF-8，把数据encode时，是否要将数据转成大端模式（网络字节序）？</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">答案是：UTF-8 编码不需要，但UTF-16，UTF-32 需要</div></pre></td></tr></table></figure>
+<p>我一开始觉得对于utf-8 也需要考虑大小端的问题，我的出发点是：<br><strong>utf-8 编码的数据会有非单字节的表示的数据</strong></p>
+<p>现在理清楚</p>
+<ul>
+<li><p>首先，应用层数据对于TCP/IP协议栈时透明的（也就是传输层，及以下，把应用层的数据当成字节流而已，不去解析数据）</p>
+</li>
+<li><p>客户端从服务器获取到数据后，手动去解析，或者用文本查看器查看文本，只要按UTF-8 编码方式去解析（单字节解析），就不存在大小端问题</p>
+</li>
+<li><p>假如，用UTF-16 或者UTF-32 编码，客服端的处理器架构不一样（大端，小端都有），那么解析编码时（假如用UTF-16 ），两个字节一块提取出来，放到内存里面，矛盾就会出现～</p>
+</li>
+<li><p>所以，假如用UTF-16，UTF-32 编码，统一将数据转成大端模式（或小端模式的数据），各自特定平台，就根据自己平台的特点，如果矛盾，进行处理，再解析（不矛盾，就直接解析）</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -958,275 +1228,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/07/15/the-evoltion-of-c/" itemprop="url">
-                  the evoltion of c++
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-07-15T13:42:54+08:00" content="2014-07-15">
-              2014-07-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/book/" itemprop="url" rel="index">
-                    <span itemprop="name">book</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/07/15/the-evoltion-of-c/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/07/15/the-evoltion-of-c/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>为啥自己去读这本书？</p>
-<ul>
-<li>每每看到C++ 的特征，联想到C，我常常会踹多这门语言加入这个特征的原因，所以这本书给了我很多新的启发</li>
-<li>跟着大师的脚步，看语言的本质，其实语言就那么回事～</li>
-<li>我在学编译原理这门课，一门语言的诞生和发展，和编译器息息相关，这对我理解编译原理大有裨益</li>
-<li>how to use C++ effectively~ </li>
-</ul>
-<h2 id="C-虚函数"><a href="#C-虚函数" class="headerlink" title="C++ 虚函数"></a>C++ 虚函数</h2><ul>
-<li>每个类里有一个指针，指向虚函数表（表里的每项记录着，每个函数的入口地址，如果，派生类重写了基类的虚函数，那么，派生类的虚函数表，只会记录重写的函数的地址，没有被重写的函数，就记录基类的虚函数的地址）</li>
-</ul>
-<h2 id="override"><a href="#override" class="headerlink" title="override"></a>override</h2><ul>
-<li>隐式转换对运算符重载的意义</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">class complex</div><div class="line">&#123;</div><div class="line">	double re,in;</div><div class="line">	public :</div><div class="line">		complex(double);</div><div class="line">		...</div><div class="line">		friend complex operator+（complex ,complex）;</div><div class="line">                ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">void g(complex z1,complex z2,double d)</div><div class="line">&#123;</div><div class="line">	complex z3 = z1+z2;</div><div class="line">	complex z4 = z1 + d;</div><div class="line">	complex z5 =- d + z1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>由于隐式转换的存在，运算符的混合运算的支持，就会方便很多<br>如果没有隐式转换的存在，假设定义四个基本算术运算，定义double 和 complex的完整运算集，要写12 个算术函数，但采用隐式转换只要4  + 1</p>
-<ul>
-<li>explict 抑制隐式转换</li>
-</ul>
-<ul>
-<li>成员 or 友元<pre><code>- 运算符 = 必须是 成员
-- 最好把+= ，*= 一类的赋值运算符
-</code></pre></li>
-</ul>
-<h2 id="continue-…"><a href="#continue-…" class="headerlink" title="continue …."></a>continue ….</h2>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/06/07/socket-理解/" itemprop="url">
-                  socket 理解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-06-07T22:03:15+08:00" content="2014-06-07">
-              2014-06-07
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/网络编程/" itemprop="url" rel="index">
-                    <span itemprop="name">网络编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/06/07/socket-理解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/06/07/socket-理解/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>tcp/ip  协议栈负责数据的封装，发送，接收，解封装，分发到应用程序<br>tcp/ip 协议栈是参照网络五层模型，根据RFC×××网络规范，实现的系统程序，提供网络服务</p>
-</blockquote>
-<h2 id="socket-的理解"><a href="#socket-的理解" class="headerlink" title="socket 的理解"></a>socket 的理解</h2><h2 id="端口的理解"><a href="#端口的理解" class="headerlink" title="端口的理解"></a>端口的理解</h2><p><strong>为啥引入端口</strong></p>
-<blockquote>
-<p>在网络通信过程中，需要唯一识别通信两端的端点，就是使用端口识别运行于某主机中的应用程序。如果没有引入端口，则只能通过 进程号进行识别。进程号是系统动态分配的，不同的系统会使用不同的进程标识符，应用程序在运行之前不知道自己的进程号，如果需要运行后再广播进程号则很难 保证通信的顺利进行。而引入端口后，就可以利用端口号识别应用程序，同时通过固定端口号来识别和使用公共服务，如HTTP和FTP等。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/06/07/socket-理解/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1272,7 +1273,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1280,7 +1281,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1289,7 +1290,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1337,7 +1338,7 @@
         <div class="copyright" >
   
   &copy;  2015.7 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

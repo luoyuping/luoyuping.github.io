@@ -87,7 +87,7 @@
 <meta name="description" content="keep thinking!">
 <meta property="og:type" content="website">
 <meta property="og:title" content="LYP's Blog">
-<meta property="og:url" content="http://beready.me/index.html">
+<meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="LYP's Blog">
 <meta property="og:description" content="keep thinking!">
 <meta name="twitter:card" content="summary">
@@ -113,7 +113,7 @@
 
 
 
-  <link rel="canonical" href="http://beready.me/"/>
+  <link rel="canonical" href="http://yoursite.com/"/>
 
 
   <title> LYP's Blog </title>
@@ -257,6 +257,397 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/06/04/ut-in-java/" itemprop="url">
+                  ut-in-java
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-06-04T01:03:33+08:00" content="2018-06-04">
+              2018-06-04
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/06/04/ut-in-java/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/06/04/ut-in-java/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="UT技能可以给你带来什么？"><a href="#UT技能可以给你带来什么？" class="headerlink" title="UT技能可以给你带来什么？"></a>UT技能可以给你带来什么？</h2><ul>
+<li>测试:<ul>
+<li>所想即所得</li>
+<li>测试的入口，没有单侧不了的代码</li>
+<li>健壮性</li>
+<li>代码重构后，验证的手段</li>
+</ul>
+</li>
+<li>学习源码的手段 </li>
+<li>痛苦: UT 代码是体力活</li>
+<li>单侧的维护: <ul>
+<li>不断补充和优化，工程的单侧是慢慢优化和补充的</li>
+<li>don’t repeat yourself,做有沉淀的事情 </li>
+</ul>
+</li>
+</ul>
+<h2 id="UT-tools"><a href="#UT-tools" class="headerlink" title="UT tools"></a>UT tools</h2><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;write less, check more&quot;</div></pre></td></tr></table></figure>
+</code></pre><ul>
+<li>Junit</li>
+<li>Spring Test</li>
+<li>AssertJ</li>
+<li>Hamcrest</li>
+<li>Mockito</li>
+<li>JSONassert</li>
+<li>JsonPath</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">   &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</div><div class="line">   &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure>
+<h2 id="test-in-java"><a href="#test-in-java" class="headerlink" title="test in java"></a>test in java</h2><h3 id="mock-spy-in-mockito"><a href="#mock-spy-in-mockito" class="headerlink" title="mock /spy in mockito"></a>mock /spy in mockito</h3><ul>
+<li><p>概念上区别: </p>
+<ul>
+<li>一个是会真实的调用，一个是不会产生调用</li>
+<li>mock 提供的是完全的mock,spy提供的部分mock;<br>也就是mock的对象,client 调用非mock 的行为，会出现异常，spy 调用非mock 行为，会按真实的代码逻辑处理;</li>
+</ul>
+</li>
+<li><p>以这个代码为例 <a href="https://gist.github.com/luoyuping/8a2f6a4efeffea581f18136952ebe567" target="_blank" rel="external">code</a></p>
+</li>
+<li><p>为什么提供这两种mock特性?</p>
+<ul>
+<li>有时，client 只需要部分的mock行为</li>
+</ul>
+</li>
+</ul>
+<h3 id="Runwith"><a href="#Runwith" class="headerlink" title="@Runwith"></a><code>@Runwith</code></h3><ul>
+<li>see <a href="https://www.mscharhag.com/java/understanding-junits-runner-architecture" target="_blank" rel="external">https://www.mscharhag.com/java/understanding-junits-runner-architecture</a></li>
+<li>runner:<code>BlockJUnit4ClassRunner</code> <code>MockitoJUnitRunner</code> <code>SpringJUnit4ClassRunnerk</code>;</li>
+</ul>
+<h3 id="junit"><a href="#junit" class="headerlink" title="junit"></a>junit</h3><p>junit4 or junit5? why?</p>
+<ul>
+<li>junit5 可以多个runner 并发的运行，测试用例能更快的得到结果 </li>
+<li>junit5 使用了java8 的特性</li>
+<li>junit5 将junit 的结构进行了拆分（多个jar包，可以按需使用特定的jar包)</li>
+<li>junit5 独立开发,提供了一套新的注解，这个有迁移成本，所以很多基于junit4 的测试框架（例如spring test),没有使用junit5</li>
+<li>junit5 重写了整个代码，所以理论上工程上可以同时使用junit4 &amp; junit5 （如何同时使用junit4 &amp; junit5 ,可以参考链接<a href="https://stackoverflow.com/questions/47158583/executing-junit-4-and-junit-5-tests-in-a-same-build" target="_blank" rel="external">link</a></li>
+<li>junit5 和junit4 的使用区别，可以参考 <a href="http://www.baeldung.com/junit-5-migration" target="_blank" rel="external">reference</a></li>
+</ul>
+<h2 id="test-in-spring-framework-based-apps"><a href="#test-in-spring-framework-based-apps" class="headerlink" title="test in spring-framework based apps"></a>test in spring-framework based apps</h2><h3 id="注解使用"><a href="#注解使用" class="headerlink" title="注解使用"></a>注解使用</h3><ul>
+<li><p><code>@ContextConfiguration</code></p>
+</li>
+<li><p><code>@WebAppConfiguration</code> </p>
+<ul>
+<li>配置好mvc 集成测试的环境，启动web服务，访问web资源</li>
+<li>使用 <code>file:src/main/webapp</code> 作为默认的web 资源目录 （潜台词是你可以指定测试使用的web资源)</li>
+</ul>
+</li>
+<li><p><code>@ActiveProfiles</code></p>
+</li>
+<li><p><code>@EnabledIf</code> <code>@DisabledIf</code> : 告知不要运行某个测试当满足一定的条件时</p>
+<ul>
+<li>可以利用这个注解作为元注解，自定义其他的注解,eg:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@Target(&#123;ElementType.TYPE, ElementType.METHOD&#125;)</div><div class="line">@Retention(RetentionPolicy.RUNTIME)</div><div class="line">@EnabledIf(</div><div class="line">    expression = &quot;#&#123;systemProperties[&apos;os.name&apos;].toLowerCase().contains(&apos;mac&apos;)&#125;&quot;,</div><div class="line">    reason = &quot;Enabled on Mac OS&quot;</div><div class="line">)</div><div class="line">public @interface EnabledOnMac &#123;&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>以下注解 在 <code>SpringJUnit4ClassRunner</code> 下生效</p>
+<ul>
+<li>@Timed(N)<br>单元测试必须在指定时间N（ms）内执行完毕</li>
+<li>@Repeat(N)<br>测试方法执行N 次</li>
+</ul>
+<p>更多测试注解，可以参考文档<a href="https://docs.spring.io/spring/docs/5.0.5.RELEASE/spring-framework-reference/testing.html#testing-introduction" target="_blank" rel="external">reference link</a></p>
+<h3 id="Test-mvc"><a href="#Test-mvc" class="headerlink" title="Test mvc"></a>Test mvc</h3><h3 id="spring-boot-based-test"><a href="#spring-boot-based-test" class="headerlink" title="spring-boot based test"></a>spring-boot based test</h3><h2 id="java-UT-业界动态"><a href="#java-UT-业界动态" class="headerlink" title="java UT 业界动态"></a>java UT 业界动态</h2><ul>
+<li>Behavior Driven Development</li>
+<li>java8_Lambdas_based junit5</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/06/04/vim-cheatsheet-for-myself/" itemprop="url">
+                  vim cheatsheet for myself
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-06-04T00:57:57+08:00" content="2018-06-04">
+              2018-06-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/quick-notes/" itemprop="url" rel="index">
+                    <span itemprop="name">quick notes</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/06/04/vim-cheatsheet-for-myself/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/06/04/vim-cheatsheet-for-myself/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>此篇主要是记录些自己没有熟悉使用的vim键位技巧</p>
+<h2 id="repeat"><a href="#repeat" class="headerlink" title="repeat"></a>repeat</h2><table>
+<thead>
+<tr>
+<th>键位</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td>重复上一次改动，支持重复次数指定，支持复制命令的重复，不支持命令行模式的重复</td>
+</tr>
+<tr>
+<td>@</td>
+<td>重复最近的一次命令，支持次数的指定</td>
+</tr>
+</tbody>
+</table>
+<h2 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h2><table>
+<thead>
+<tr>
+<th>键位</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gR</td>
+<td>从当前位置开始，一次替换每个字符</td>
+</tr>
+</tbody>
+</table>
+<h2 id="move"><a href="#move" class="headerlink" title="move"></a>move</h2><table>
+<thead>
+<tr>
+<th>键位</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>c{motion}</td>
+<td>删除{motion}的数据到寄存器里面并且进入插入模式,cw,caw(change a word),ci(change inside)</td>
+</tr>
+<tr>
+<td>C</td>
+<td>删除到行尾</td>
+</tr>
+<tr>
+<td>cc</td>
+<td>删除行，可以指定方向和行数，例如cc4j,代表向下删除3行</td>
+</tr>
+<tr>
+<td>{count}s</td>
+<td>s 即是substitute 的缩写,删除指定数量的字符到寄存器里面，并且进入插入模式,注意区分c</td>
+</tr>
+<tr>
+<td>S</td>
+<td>删除行，和cc 等价</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>区分普通的 d 删除，这个不会进入插入模式</li>
+<li>以上快捷键在visual 模式也能操作</li>
+</ul>
+<h2 id="yank"><a href="#yank" class="headerlink" title="yank"></a>yank</h2><table>
+<thead>
+<tr>
+<th>键位</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>yi</td>
+<td>yank inside,例如，yi” 复制“里面的字符</td>
+</tr>
+<tr>
+<td>ya</td>
+<td>yank around ,例如 ya( 复制()里面的字符，包括()</td>
+</tr>
+<tr>
+<td>yw</td>
+<td>yank word</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -739,233 +1130,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/25/怎样的代码是可维护的好业务代码/" itemprop="url">
-                  如何写好可维护的好代码
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-25T22:30:28+08:00" content="2017-05-25">
-              2017-05-25
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/05/25/怎样的代码是可维护的好业务代码/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/25/怎样的代码是可维护的好业务代码/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在公司写了将接近一年的业务代码，自己维护自己的代码，同时也接手过别人的代码，不断地重构过程中，自己也不断地思考和总结：如何写好代码？</p>
-<h2 id="为啥需要写好代码"><a href="#为啥需要写好代码" class="headerlink" title="为啥需要写好代码"></a>为啥需要写好代码</h2><p>可讲的理由太多，说两点：</p>
-<ul>
-<li>这份代码不是只有你自己看，别人看到这份代码，如果写的太差，可读性很差，估计别人就不会认可的作者代码水平(要是个接盘侠，估计背地里也就开始骂娘了).</li>
-<li>可维护性太差，谁敢改？全是坑。</li>
-</ul>
-<h2 id="一些原则"><a href="#一些原则" class="headerlink" title="一些原则"></a>一些原则</h2><h3 id="保持代码洁癖"><a href="#保持代码洁癖" class="headerlink" title="保持代码洁癖"></a>保持代码洁癖</h3><p>代码风格严谨的团队，从代码的<em>基本规范，代码的命名，函数的抽取，类的抽取，最后UT的覆盖率，OOP,以及设计模式的运用</em>，都会有要求，本身在学生时代，或多或少接触过代码规范问题，<br>有些意识，但是在生产环境，就需要特别加强。<br>最近阿里的java代码规范的开源，还是比google的代码规范详尽很多，涉及了例如函数设计的经验，作为一个职场的新人，至少得把这份规范好好研读下</p>
-<h3 id="代码的可维护性是个长期的过程"><a href="#代码的可维护性是个长期的过程" class="headerlink" title="代码的可维护性是个长期的过程"></a>代码的可维护性是个长期的过程</h3><p>业务代码就是这样，不断地随着业务在改，很多代码慢慢的就没用了，脏代码越来越多，慢慢这套代码就需要进行重构了</p>
-<ul>
-<li>删除没用的代码</li>
-<li>避免相同的代码（或相近）出现在3个或以上的类里面，注意提取</li>
-<li>避免一个类写的太长，一个类大于300 line，我觉得就要拆了，业务代码嘛，就按业务功能拆开，提取公用的部分。<br>最近接手一个工程，看到一个service，写了1500 行，那感觉真是日了* 。</li>
-</ul>
-<h3 id="UT"><a href="#UT" class="headerlink" title="UT"></a>UT</h3><ul>
-<li>至少覆盖静态类 </li>
-</ul>
-<h3 id="工程的配置文件的配置常量问题"><a href="#工程的配置文件的配置常量问题" class="headerlink" title="工程的配置文件的配置常量问题"></a>工程的配置文件的配置常量问题</h3><ul>
-<li>工程配置常量集中化管理<br>工程有很多的根据环境不同(生产环境，预上线环境，测试环境，本地环境)配置变量不同的情况，这些配置常量需要提取集中化到配置常量文件中，不能到处散落在各地，不好维护</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/18/一个健全系统设计的必备元素/" itemprop="url">
-                  系统稳定性之监控报警建设
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-18T20:16:17+08:00" content="2017-05-18">
-              2017-05-18
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/05/18/一个健全系统设计的必备元素/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/18/一个健全系统设计的必备元素/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ul>
-<li>自己目前将一个系统从零起步，逐渐完善，一路走来，对整个系统的稳定性也是比较满意, 针对高可稳定这个角度，总结下需要包含哪些设计元素。</li>
-<li>文章就需要的元素进行大概的总结，不对具体的技术选型，以及设计细节，展开描述。</li>
-<li>是自己的实践总结之谈。</li>
-</ul>
-<h1 id=""><a href="#" class="headerlink" title=""></a>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/05/18/一个健全系统设计的必备元素/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1011,7 +1175,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1019,7 +1183,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1028,7 +1192,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1076,7 +1240,7 @@
         <div class="copyright" >
   
   &copy;  2015.7 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

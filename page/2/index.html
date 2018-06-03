@@ -87,7 +87,7 @@
 <meta name="description" content="keep thinking!">
 <meta property="og:type" content="website">
 <meta property="og:title" content="LYP's Blog">
-<meta property="og:url" content="http://beready.me/page/2/index.html">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="LYP's Blog">
 <meta property="og:description" content="keep thinking!">
 <meta name="twitter:card" content="summary">
@@ -113,7 +113,7 @@
 
 
 
-  <link rel="canonical" href="http://beready.me/page/2/"/>
+  <link rel="canonical" href="http://yoursite.com/page/2/"/>
 
 
   <title> LYP's Blog </title>
@@ -257,6 +257,233 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/25/怎样的代码是可维护的好业务代码/" itemprop="url">
+                  如何写好可维护的好代码
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-25T22:30:28+08:00" content="2017-05-25">
+              2017-05-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/25/怎样的代码是可维护的好业务代码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/25/怎样的代码是可维护的好业务代码/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在公司写了将接近一年的业务代码，自己维护自己的代码，同时也接手过别人的代码，不断地重构过程中，自己也不断地思考和总结：如何写好代码？</p>
+<h2 id="为啥需要写好代码"><a href="#为啥需要写好代码" class="headerlink" title="为啥需要写好代码"></a>为啥需要写好代码</h2><p>可讲的理由太多，说两点：</p>
+<ul>
+<li>这份代码不是只有你自己看，别人看到这份代码，如果写的太差，可读性很差，估计别人就不会认可的作者代码水平(要是个接盘侠，估计背地里也就开始骂娘了).</li>
+<li>可维护性太差，谁敢改？全是坑。</li>
+</ul>
+<h2 id="一些原则"><a href="#一些原则" class="headerlink" title="一些原则"></a>一些原则</h2><h3 id="保持代码洁癖"><a href="#保持代码洁癖" class="headerlink" title="保持代码洁癖"></a>保持代码洁癖</h3><p>代码风格严谨的团队，从代码的<em>基本规范，代码的命名，函数的抽取，类的抽取，最后UT的覆盖率，OOP,以及设计模式的运用</em>，都会有要求，本身在学生时代，或多或少接触过代码规范问题，<br>有些意识，但是在生产环境，就需要特别加强。<br>最近阿里的java代码规范的开源，还是比google的代码规范详尽很多，涉及了例如函数设计的经验，作为一个职场的新人，至少得把这份规范好好研读下</p>
+<h3 id="代码的可维护性是个长期的过程"><a href="#代码的可维护性是个长期的过程" class="headerlink" title="代码的可维护性是个长期的过程"></a>代码的可维护性是个长期的过程</h3><p>业务代码就是这样，不断地随着业务在改，很多代码慢慢的就没用了，脏代码越来越多，慢慢这套代码就需要进行重构了</p>
+<ul>
+<li>删除没用的代码</li>
+<li>避免相同的代码（或相近）出现在3个或以上的类里面，注意提取</li>
+<li>避免一个类写的太长，一个类大于300 line，我觉得就要拆了，业务代码嘛，就按业务功能拆开，提取公用的部分。<br>最近接手一个工程，看到一个service，写了1500 行，那感觉真是日了* 。</li>
+</ul>
+<h3 id="UT"><a href="#UT" class="headerlink" title="UT"></a>UT</h3><ul>
+<li>至少覆盖静态类 </li>
+</ul>
+<h3 id="工程的配置文件的配置常量问题"><a href="#工程的配置文件的配置常量问题" class="headerlink" title="工程的配置文件的配置常量问题"></a>工程的配置文件的配置常量问题</h3><ul>
+<li>工程配置常量集中化管理<br>工程有很多的根据环境不同(生产环境，预上线环境，测试环境，本地环境)配置变量不同的情况，这些配置常量需要提取集中化到配置常量文件中，不能到处散落在各地，不好维护</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/18/一个健全系统设计的必备元素/" itemprop="url">
+                  系统稳定性之监控报警建设
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-18T20:16:17+08:00" content="2017-05-18">
+              2017-05-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/18/一个健全系统设计的必备元素/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/18/一个健全系统设计的必备元素/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <ul>
+<li>自己目前将一个系统从零起步，逐渐完善，一路走来，对整个系统的稳定性也是比较满意, 针对高可稳定这个角度，总结下需要包含哪些设计元素。</li>
+<li>文章就需要的元素进行大概的总结，不对具体的技术选型，以及设计细节，展开描述。</li>
+<li>是自己的实践总结之谈。</li>
+</ul>
+<h1 id=""><a href="#" class="headerlink" title=""></a>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/05/18/一个健全系统设计的必备元素/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -835,276 +1062,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/07/io复用/" itemprop="url">
-                  I/O  复用  --  熟悉 API篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-07T01:22:01+08:00" content="2015-10-07">
-              2015-10-07
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/unix-learning/" itemprop="url" rel="index">
-                    <span itemprop="name">unix learning</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="横向比较"><a href="#横向比较" class="headerlink" title="横向比较"></a>横向比较</h2><table>
-<thead>
-<tr>
-<th style="text-align:left"></th>
-<th>函数原型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">select</td>
-<td><strong> int select(int nfds,fd_set* readfds,fd_set* writefds,fd_set* exceptfds,struct timeval* timeout )</strong></td>
-</tr>
-<tr>
-<td style="text-align:left">poll</td>
-<td><strong> int poll(struct pollfd* fds,nfds_t nfds,int timeout) </strong></td>
-</tr>
-<tr>
-<td style="text-align:left">epoll</td>
-<td><strong> int epoll(int epollfd,struct epoll_event* events,int maxevent,int timeout) </strong></td>
-</tr>
-</tbody>
-</table>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/07/io复用/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/09/02/网络协议设计的思考总结/" itemprop="url">
-                  网络协议设计的思考总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-02T13:56:53+08:00" content="2015-09-02">
-              2015-09-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/tcp/" itemprop="url" rel="index">
-                    <span itemprop="name">tcp</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/02/网络协议设计的思考总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/02/网络协议设计的思考总结/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="字符编码-ascii-Unicode-UTF-8-，UTF16-UTF32…"><a href="#字符编码-ascii-Unicode-UTF-8-，UTF16-UTF32…" class="headerlink" title="字符编码 ascii , Unicode ,UTF-8 ，UTF16,UTF32…"></a>字符编码 ascii , Unicode ,UTF-8 ，UTF16,UTF32…</h2><ul>
-<li><a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html" target="_blank" rel="external">阮一峰的文章</a> </li>
-</ul>
-<p>##编码和网络字节序<br>最近在做一个项目时，遇到一个问题：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">应用层的数据组织格式是json，字符集的编码是UTF-8，把数据encode时，是否要将数据转成大端模式（网络字节序）？</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">答案是：UTF-8 编码不需要，但UTF-16，UTF-32 需要</div></pre></td></tr></table></figure>
-<p>我一开始觉得对于utf-8 也需要考虑大小端的问题，我的出发点是：<br><strong>utf-8 编码的数据会有非单字节的表示的数据</strong></p>
-<p>现在理清楚</p>
-<ul>
-<li><p>首先，应用层数据对于TCP/IP协议栈时透明的（也就是传输层，及以下，把应用层的数据当成字节流而已，不去解析数据）</p>
-</li>
-<li><p>客户端从服务器获取到数据后，手动去解析，或者用文本查看器查看文本，只要按UTF-8 编码方式去解析（单字节解析），就不存在大小端问题</p>
-</li>
-<li><p>假如，用UTF-16 或者UTF-32 编码，客服端的处理器架构不一样（大端，小端都有），那么解析编码时（假如用UTF-16 ），两个字节一块提取出来，放到内存里面，矛盾就会出现～</p>
-</li>
-<li><p>所以，假如用UTF-16，UTF-32 编码，统一将数据转成大端模式（或小端模式的数据），各自特定平台，就根据自己平台的特点，如果矛盾，进行处理，再解析（不矛盾，就直接解析）</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1150,7 +1107,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1158,7 +1115,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1167,7 +1124,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1215,7 +1172,7 @@
         <div class="copyright" >
   
   &copy;  2015.7 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

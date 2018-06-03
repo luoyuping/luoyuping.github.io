@@ -1,0 +1,789 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="UT技能可以给你带来什么？
+测试:
+所想即所得
+测试的入口，没有单侧不了的代码
+健壮性
+代码重构后，验证的手段
+
+
+学习源码的手段 
+痛苦: UT 代码是体力活
+单侧的维护: 
+不断补充和优化，工程的单侧是慢慢优化和补充的
+don’t repeat yourself,做有沉淀的事情 
+
+
+
+UT tools1&amp;quot;write less, check more&amp;quot;
+
+Junit
+Spr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ut-in-java">
+<meta property="og:url" content="http://yoursite.com/2018/06/04/ut-in-java/index.html">
+<meta property="og:site_name" content="LYP's Blog">
+<meta property="og:description" content="UT技能可以给你带来什么？
+测试:
+所想即所得
+测试的入口，没有单侧不了的代码
+健壮性
+代码重构后，验证的手段
+
+
+学习源码的手段 
+痛苦: UT 代码是体力活
+单侧的维护: 
+不断补充和优化，工程的单侧是慢慢优化和补充的
+don’t repeat yourself,做有沉淀的事情 
+
+
+
+UT tools1&amp;quot;write less, check more&amp;quot;
+
+Junit
+Spr">
+<meta property="og:updated_time" content="2018-06-03T17:03:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ut-in-java">
+<meta name="twitter:description" content="UT技能可以给你带来什么？
+测试:
+所想即所得
+测试的入口，没有单侧不了的代码
+健壮性
+代码重构后，验证的手段
+
+
+学习源码的手段 
+痛苦: UT 代码是体力活
+单侧的维护: 
+不断补充和优化，工程的单侧是慢慢优化和补充的
+don’t repeat yourself,做有沉淀的事情 
+
+
+
+UT tools1&amp;quot;write less, check more&amp;quot;
+
+Junit
+Spr">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/04/ut-in-java/"/>
+
+
+  <title> ut-in-java | LYP's Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">LYP's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            了解我
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="/resume" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file"></i> <br />
+            
+            简历
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-book">
+          <a href="/book" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            看书
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ut-in-java
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-06-04T01:03:33+08:00" content="2018-06-04">
+              2018-06-04
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/06/04/ut-in-java/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/06/04/ut-in-java/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="UT技能可以给你带来什么？"><a href="#UT技能可以给你带来什么？" class="headerlink" title="UT技能可以给你带来什么？"></a>UT技能可以给你带来什么？</h2><ul>
+<li>测试:<ul>
+<li>所想即所得</li>
+<li>测试的入口，没有单侧不了的代码</li>
+<li>健壮性</li>
+<li>代码重构后，验证的手段</li>
+</ul>
+</li>
+<li>学习源码的手段 </li>
+<li>痛苦: UT 代码是体力活</li>
+<li>单侧的维护: <ul>
+<li>不断补充和优化，工程的单侧是慢慢优化和补充的</li>
+<li>don’t repeat yourself,做有沉淀的事情 </li>
+</ul>
+</li>
+</ul>
+<h2 id="UT-tools"><a href="#UT-tools" class="headerlink" title="UT tools"></a>UT tools</h2><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;write less, check more&quot;</div></pre></td></tr></table></figure>
+</code></pre><ul>
+<li>Junit</li>
+<li>Spring Test</li>
+<li>AssertJ</li>
+<li>Hamcrest</li>
+<li>Mockito</li>
+<li>JSONassert</li>
+<li>JsonPath</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">   &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</div><div class="line">   &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure>
+<h2 id="test-in-java"><a href="#test-in-java" class="headerlink" title="test in java"></a>test in java</h2><h3 id="mock-spy-in-mockito"><a href="#mock-spy-in-mockito" class="headerlink" title="mock /spy in mockito"></a>mock /spy in mockito</h3><ul>
+<li><p>概念上区别: </p>
+<ul>
+<li>一个是会真实的调用，一个是不会产生调用</li>
+<li>mock 提供的是完全的mock,spy提供的部分mock;<br>也就是mock的对象,client 调用非mock 的行为，会出现异常，spy 调用非mock 行为，会按真实的代码逻辑处理;</li>
+</ul>
+</li>
+<li><p>以这个代码为例 <a href="https://gist.github.com/luoyuping/8a2f6a4efeffea581f18136952ebe567" target="_blank" rel="external">code</a></p>
+</li>
+<li><p>为什么提供这两种mock特性?</p>
+<ul>
+<li>有时，client 只需要部分的mock行为</li>
+</ul>
+</li>
+</ul>
+<h3 id="Runwith"><a href="#Runwith" class="headerlink" title="@Runwith"></a><code>@Runwith</code></h3><ul>
+<li>see <a href="https://www.mscharhag.com/java/understanding-junits-runner-architecture" target="_blank" rel="external">https://www.mscharhag.com/java/understanding-junits-runner-architecture</a></li>
+<li>runner:<code>BlockJUnit4ClassRunner</code> <code>MockitoJUnitRunner</code> <code>SpringJUnit4ClassRunnerk</code>;</li>
+</ul>
+<h3 id="junit"><a href="#junit" class="headerlink" title="junit"></a>junit</h3><p>junit4 or junit5? why?</p>
+<ul>
+<li>junit5 可以多个runner 并发的运行，测试用例能更快的得到结果 </li>
+<li>junit5 使用了java8 的特性</li>
+<li>junit5 将junit 的结构进行了拆分（多个jar包，可以按需使用特定的jar包)</li>
+<li>junit5 独立开发,提供了一套新的注解，这个有迁移成本，所以很多基于junit4 的测试框架（例如spring test),没有使用junit5</li>
+<li>junit5 重写了整个代码，所以理论上工程上可以同时使用junit4 &amp; junit5 （如何同时使用junit4 &amp; junit5 ,可以参考链接<a href="https://stackoverflow.com/questions/47158583/executing-junit-4-and-junit-5-tests-in-a-same-build" target="_blank" rel="external">link</a></li>
+<li>junit5 和junit4 的使用区别，可以参考 <a href="http://www.baeldung.com/junit-5-migration" target="_blank" rel="external">reference</a></li>
+</ul>
+<h2 id="test-in-spring-framework-based-apps"><a href="#test-in-spring-framework-based-apps" class="headerlink" title="test in spring-framework based apps"></a>test in spring-framework based apps</h2><h3 id="注解使用"><a href="#注解使用" class="headerlink" title="注解使用"></a>注解使用</h3><ul>
+<li><p><code>@ContextConfiguration</code></p>
+</li>
+<li><p><code>@WebAppConfiguration</code> </p>
+<ul>
+<li>配置好mvc 集成测试的环境，启动web服务，访问web资源</li>
+<li>使用 <code>file:src/main/webapp</code> 作为默认的web 资源目录 （潜台词是你可以指定测试使用的web资源)</li>
+</ul>
+</li>
+<li><p><code>@ActiveProfiles</code></p>
+</li>
+<li><p><code>@EnabledIf</code> <code>@DisabledIf</code> : 告知不要运行某个测试当满足一定的条件时</p>
+<ul>
+<li>可以利用这个注解作为元注解，自定义其他的注解,eg:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@Target(&#123;ElementType.TYPE, ElementType.METHOD&#125;)</div><div class="line">@Retention(RetentionPolicy.RUNTIME)</div><div class="line">@EnabledIf(</div><div class="line">    expression = &quot;#&#123;systemProperties[&apos;os.name&apos;].toLowerCase().contains(&apos;mac&apos;)&#125;&quot;,</div><div class="line">    reason = &quot;Enabled on Mac OS&quot;</div><div class="line">)</div><div class="line">public @interface EnabledOnMac &#123;&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>以下注解 在 <code>SpringJUnit4ClassRunner</code> 下生效</p>
+<ul>
+<li>@Timed(N)<br>单元测试必须在指定时间N（ms）内执行完毕</li>
+<li>@Repeat(N)<br>测试方法执行N 次</li>
+</ul>
+<p>更多测试注解，可以参考文档<a href="https://docs.spring.io/spring/docs/5.0.5.RELEASE/spring-framework-reference/testing.html#testing-introduction" target="_blank" rel="external">reference link</a></p>
+<h3 id="Test-mvc"><a href="#Test-mvc" class="headerlink" title="Test mvc"></a>Test mvc</h3><h3 id="spring-boot-based-test"><a href="#spring-boot-based-test" class="headerlink" title="spring-boot based test"></a>spring-boot based test</h3><h2 id="java-UT-业界动态"><a href="#java-UT-业界动态" class="headerlink" title="java UT 业界动态"></a>java UT 业界动态</h2><ul>
+<li>Behavior Driven Development</li>
+<li>java8_Lambdas_based junit5</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/04/vim-cheatsheet-for-myself/" rel="next" title="vim cheatsheet for myself">
+                <i class="fa fa-chevron-left"></i> vim cheatsheet for myself
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/06/04/ut-in-java/"
+           data-title="ut-in-java" data-url="http://yoursite.com/2018/06/04/ut-in-java/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="罗宇平" />
+          <p class="site-author-name" itemprop="name">罗宇平</p>
+          <p class="site-description motion-element" itemprop="description">keep thinking!</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luoyuping" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#UT技能可以给你带来什么？"><span class="nav-number">1.</span> <span class="nav-text">UT技能可以给你带来什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UT-tools"><span class="nav-number">2.</span> <span class="nav-text">UT tools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#test-in-java"><span class="nav-number">3.</span> <span class="nav-text">test in java</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mock-spy-in-mockito"><span class="nav-number">3.1.</span> <span class="nav-text">mock /spy in mockito</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runwith"><span class="nav-number">3.2.</span> <span class="nav-text">@Runwith</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#junit"><span class="nav-number">3.3.</span> <span class="nav-text">junit</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#test-in-spring-framework-based-apps"><span class="nav-number">4.</span> <span class="nav-text">test in spring-framework based apps</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注解使用"><span class="nav-number">4.1.</span> <span class="nav-text">注解使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Test-mvc"><span class="nav-number">4.2.</span> <span class="nav-text">Test mvc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spring-boot-based-test"><span class="nav-number">4.3.</span> <span class="nav-text">spring-boot based test</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java-UT-业界动态"><span class="nav-number">5.</span> <span class="nav-text">java UT 业界动态</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015.7 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">罗宇平</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"bereadyme"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
